@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsucraft.buzz</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://my-img.cc/i/10/66949908e5517.ico</url><title>avatar</title><link>https://blog.jsucraft.buzz</link></image><lastBuildDate>Wed, 21 Aug 2024 15:34:30 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>06.多人联机</title><link>https://blog.jsucraft.buzz/post/06.-duo-ren-lian-ji.html</link><description>## 局域网联机&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsucraft.buzz</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://my-img.cc/i/10/66949908e5517.ico</url><title>avatar</title><link>https://blog.jsucraft.buzz</link></image><lastBuildDate>Wed, 21 Aug 2024 15:38:35 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>06.多人联机</title><link>https://blog.jsucraft.buzz/post/6.html</link><description>## 局域网联机&#13;
 &#13;
 #### 条件&#13;
 &#13;
@@ -19,7 +19,7 @@
 &#13;
 ## 远程联机&#13;
 &#13;
-当设备不处于局域网时，通常无法访问主设备，因此无法联机。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/06.-duo-ren-lian-ji.html</guid><pubDate>Wed, 21 Aug 2024 15:21:25 +0000</pubDate></item><item><title>05.安装整合包</title><link>https://blog.jsucraft.buzz/post/05.-an-zhuang-zheng-he-bao.html</link><description>## 社区整合包&#13;
+当设备不处于局域网时，通常无法访问主设备，因此无法联机。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/6.html</guid><pubDate>Wed, 21 Aug 2024 15:21:25 +0000</pubDate></item><item><title>05.安装整合包</title><link>https://blog.jsucraft.buzz/post/5.html</link><description>## 社区整合包&#13;
 &#13;
 #### 特点&#13;
 &#13;
@@ -28,12 +28,12 @@
 &#13;
 #### 安装&#13;
 &#13;
-- HMCL和PCL2可以直接拖入zip或mcpack文件。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/05.-an-zhuang-zheng-he-bao.html</guid><pubDate>Wed, 21 Aug 2024 15:18:19 +0000</pubDate></item><item><title>04.导入存档、数据包、材质包</title><link>https://blog.jsucraft.buzz/post/04.-dao-ru-cun-dang-%E3%80%81-shu-ju-bao-%E3%80%81-cai-zhi-bao.html</link><description>## 导入存档&#13;
+- HMCL和PCL2可以直接拖入zip或mcpack文件。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/5.html</guid><pubDate>Wed, 21 Aug 2024 15:18:19 +0000</pubDate></item><item><title>04.导入存档、数据包、材质包</title><link>https://blog.jsucraft.buzz/post/4.html</link><description>## 导入存档&#13;
 &#13;
-将要导入的存档解压，最终格式为一个文件夹，文件夹内有“level.dat”文件，将该文件夹复制到游戏文件夹的“saves”文件夹内即可完成导入。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/04.-dao-ru-cun-dang-%E3%80%81-shu-ju-bao-%E3%80%81-cai-zhi-bao.html</guid><pubDate>Wed, 21 Aug 2024 15:14:57 +0000</pubDate></item><item><title>03.安装mod、光影</title><link>https://blog.jsucraft.buzz/post/03.-an-zhuang-mod%E3%80%81-guang-ying.html</link><description>### 写在前面&#13;
+将要导入的存档解压，最终格式为一个文件夹，文件夹内有“level.dat”文件，将该文件夹复制到游戏文件夹的“saves”文件夹内即可完成导入。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/4.html</guid><pubDate>Wed, 21 Aug 2024 15:14:57 +0000</pubDate></item><item><title>03.安装mod、光影</title><link>https://blog.jsucraft.buzz/post/3.html</link><description>### 写在前面&#13;
 &#13;
-本文将介绍在启动器中为Java版安装Mod和光影的方法。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/03.-an-zhuang-mod%E3%80%81-guang-ying.html</guid><pubDate>Wed, 21 Aug 2024 15:13:24 +0000</pubDate></item><item><title>02.主流启动器介绍</title><link>https://blog.jsucraft.buzz/post/02.-zhu-liu-qi-dong-qi-jie-shao.html</link><description>### 写在前面&#13;
+本文将介绍在启动器中为Java版安装Mod和光影的方法。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/3.html</guid><pubDate>Wed, 21 Aug 2024 15:13:24 +0000</pubDate></item><item><title>02.主流启动器介绍</title><link>https://blog.jsucraft.buzz/post/2.html</link><description>### 写在前面&#13;
 &#13;
-本文只介绍官方启动器和具有完备功能（Authlib Injector登入、整合包安装等）的主流启动器。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/02.-zhu-liu-qi-dong-qi-jie-shao.html</guid><pubDate>Wed, 21 Aug 2024 15:09:12 +0000</pubDate></item><item><title>01.MC的版本都有哪些？</title><link>https://blog.jsucraft.buzz/post/01.MC-de-ban-ben-du-you-na-xie-%EF%BC%9F.html</link><description>### 写在前面&#13;
+本文只介绍官方启动器和具有完备功能（Authlib Injector登入、整合包安装等）的主流启动器。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/2.html</guid><pubDate>Wed, 21 Aug 2024 15:09:12 +0000</pubDate></item><item><title>01.MC的版本都有哪些？</title><link>https://blog.jsucraft.buzz/post/1.html</link><description>### 写在前面&#13;
 &#13;
-本文只介绍官方（Microsoft、Mojang Studios、网易）发行的Minecraft版本，不包括周边版本（Minecraft Dungeons、Minecraft Legends等）。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/01.MC-de-ban-ben-du-you-na-xie-%EF%BC%9F.html</guid><pubDate>Wed, 21 Aug 2024 14:51:00 +0000</pubDate></item></channel></rss>
+本文只介绍官方（Microsoft、Mojang Studios、网易）发行的Minecraft版本，不包括周边版本（Minecraft Dungeons、Minecraft Legends等）。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/1.html</guid><pubDate>Wed, 21 Aug 2024 14:51:00 +0000</pubDate></item></channel></rss>
