@@ -1,5 +1,25 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://Dainsleif233.github.io/jsucraft-blog</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Dainsleif233.github.io/jsucraft-blog</link></image><lastBuildDate>Wed, 21 Aug 2024 15:18:46 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>05.安装整合包</title><link>https://Dainsleif233.github.io/jsucraft-blog/post/05.-an-zhuang-zheng-he-bao.html</link><description>## 社区整合包&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://Dainsleif233.github.io/jsucraft-blog</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Dainsleif233.github.io/jsucraft-blog</link></image><lastBuildDate>Wed, 21 Aug 2024 15:21:56 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>06.多人联机</title><link>https://Dainsleif233.github.io/jsucraft-blog/post/06.-duo-ren-lian-ji.html</link><description>## 局域网联机&#13;
+&#13;
+#### 条件&#13;
+&#13;
+- 多人联机需要使用同版本游戏&#13;
+- 设备需要在同一局域网内的同一网段&#13;
+- 其他设备需要能访问主设备（可以用ping工具测试）&#13;
+&#13;
+#### 操作&#13;
+&#13;
+- 主设备进入世界，打开局域网联机&#13;
+&#13;
+![局域网世界](https://my-img.cc/i/10/66c6059712836.png)&#13;
+&#13;
+- 其他设备打开多人游戏，若正常则可以扫描到主设备&#13;
+&#13;
+![多人游戏](https://my-img.cc/i/10/66c60596644e3.png)&#13;
+&#13;
+## 远程联机&#13;
+&#13;
+当设备不处于局域网时，通常无法访问主设备，因此无法联机。</description><guid isPermaLink="true">https://Dainsleif233.github.io/jsucraft-blog/post/06.-duo-ren-lian-ji.html</guid><pubDate>Wed, 21 Aug 2024 15:21:25 +0000</pubDate></item><item><title>05.安装整合包</title><link>https://Dainsleif233.github.io/jsucraft-blog/post/05.-an-zhuang-zheng-he-bao.html</link><description>## 社区整合包&#13;
 &#13;
 #### 特点&#13;
 &#13;
