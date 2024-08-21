@@ -1,6 +1,12 @@
 {
-    "title":"Blog Title",
-    "subTitle":"Blog description",
-    "avatarUrl":"https://github.githubassets.com/favicons/favicon.svg",
-    "GMEEK_VERSION":"last"
+    "title":"JSUCraft Blog",
+    "subTitle":"江大MC同好会博客",
+    "avatarUrl":"https://my-img.cc/i/10/66949908e5517.ico",
+    "GMEEK_VERSION":"last",
+    "startSite":"08/21/2024",
+    "homeUrl":"https://blog.jsucraft.buzz",
+    "filingNum":"萌ICP备20240799号",
+    "urlMode":"pinyin",
+    "bottomText":"转载请注明出处",
+    "needComment":0
 }
