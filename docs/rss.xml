@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsucraft.buzz</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg</url><title>avatar</title><link>https://blog.jsucraft.buzz</link></image><lastBuildDate>Sat, 02 Nov 2024 06:49:13 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>方块江大（一期）策划案</title><link>https://blog.jsucraft.buzz/post/7.html</link><description># 方块江大（一期）策划案&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsucraft.buzz</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg</url><title>avatar</title><link>https://blog.jsucraft.buzz</link></image><lastBuildDate>Sat, 02 Nov 2024 06:56:08 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>方块江大（一期）策划案</title><link>https://blog.jsucraft.buzz/post/7.html</link><description># 方块江大（一期）策划案&#13;
 &#13;
 #### 主办：江苏大学独角兽电娱社MC分部&#13;
 &#13;
@@ -41,7 +41,7 @@
 将要导入的存档解压，最终格式为一个文件夹，文件夹内有“level.dat”文件，将该文件夹复制到游戏文件夹的“saves”文件夹内即可完成导入。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/4.html</guid><pubDate>Wed, 21 Aug 2024 15:14:57 +0000</pubDate></item><item><title>03.安装mod、光影</title><link>https://blog.jsucraft.buzz/post/3.html</link><description>### 写在前面&#13;
 &#13;
 本文将介绍在启动器中为Java版安装Mod和光影的方法。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/3.html</guid><pubDate>Wed, 21 Aug 2024 15:13:24 +0000</pubDate></item><item><title>02.主流启动器介绍</title><link>https://blog.jsucraft.buzz/post/2.html</link><description>### 写在前面&#13;
-&#13;
+ &#13;
 本文只介绍官方启动器和具有完备功能（Authlib Injector登入、整合包安装等）的主流启动器。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/2.html</guid><pubDate>Wed, 21 Aug 2024 15:09:12 +0000</pubDate></item><item><title>01.MC的版本都有哪些？</title><link>https://blog.jsucraft.buzz/post/1.html</link><description>### 写在前面&#13;
 &#13;
 本文只介绍官方（Microsoft、Mojang Studios、网易）发行的Minecraft版本，不包括周边版本（Minecraft Dungeons、Minecraft Legends等）。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/1.html</guid><pubDate>Wed, 21 Aug 2024 14:51:00 +0000</pubDate></item></channel></rss>
