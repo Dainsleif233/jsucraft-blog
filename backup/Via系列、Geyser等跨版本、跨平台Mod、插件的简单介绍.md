@@ -2,23 +2,23 @@
 
 本文主要介绍以下内容：
 
-1. ViaVersion系列（[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)、[ViaBackwards]()、[ViaRewind]()、[ViaFabric]()、[ViaFabricPlus]()、[ViaForge]()、[ViaAAS]()、[ViaProxy]()、[ViaBungee]()、[ViaSponge]()、[ViaAprilFools]()、[ViaLegacy]()、[ViaRewindLegacySupport]()）
+1. ViaVersion系列（[ViaVersion](#viaversion)、[ViaBackwards]()、[ViaRewind]()、[ViaFabric]()、[ViaFabricPlus]()、[ViaForge]()、[ViaAAS]()、[ViaProxy]()、[ViaBungee]()、[ViaSponge]()、[ViaAprilFools]()、[ViaLegacy]()、[ViaRewindLegacySupport]()）
 2. 其他项目（[MultiConnect]()、[ViaForgePlus]()、[ViaVanillaPlus]()、[ViaBedrock]()）
 3. Geyser系列（[Geyser]()、[Floodgate]()、[GeyserOptionalPack]()、[ThirdPartyCosmetics]()、[Hurricane]()、[GeyserConnect]()）
 
 ## 开始！
 
-### [ViaVersion](https://www.mcmod.cn/class/5760.html)（Fabric/Spigot/Velocity）
+### [ViaVersion](https://www.mcmod.cn/class/5760.html)（Fabric/Spigot/Velocity）{#viaversion}
 
 - ViaVersion自身的作用是支持新版客户端连接旧版服务器（服务端和客户端都是）
 - ViaVersion及其附属只翻译了网络包，有很大概率触发服务器反作弊
 - ViaVersion在作为Fabric Mod时，需要[ViaFabric]()作为前置
 - 1.20.x及以下版本支持BungeeCord和Sponge，1.21.x由[ViaBungee]()和[ViaSponge]()支持
 
-### [ViaBackwards](https://www.mcmod.cn/class/5762.html)（Fabric/Spigot/Velocity）
+### [ViaBackwards](https://www.mcmod.cn/class/5762.html)（Fabric/Spigot/Velocity）{#viabackwards}
 
 - ViaBackwards自身的作用是支持1.9及以上的客户端连接至新版的服务器
-- ViaBackwards需要[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)/[ViaFabric]()作为前置
+- ViaBackwards需要[ViaVersion](#viaversion)/[ViaFabric]()作为前置
 
 ### [ViaRewind](https://www.mcmod.cn/class/5761.html)（Fabric/Spigot/Velocity）
 
@@ -27,19 +27,19 @@
 
 ### [ViaFabric](https://www.mcmod.cn/class/3327.html)（Fabric）
 
-- ViaFabric在Fabric客户端及服务端实现了[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)
-- ViaFabric可作为[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)的前置也可单独起作用，当[ViaFabric]()并未及时更新时，可以通过更新[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)来更新
+- ViaFabric在Fabric客户端及服务端实现了[ViaVersion](#viaversion)
+- ViaFabric可作为[ViaVersion](#viaversion)的前置也可单独起作用，当[ViaFabric]()并未及时更新时，可以通过更新[ViaVersion](#viaversion)来更新
 
 ### [ViaFabricPlus](https://www.mcmod.cn/class/9446.html)（Fabric客户端）
 
 - ViaFabricPlus是面向客户端的[ViaFabric]()和[Multiconnect]()替代品，可连接至几乎所有版本（包括正式版、Beta版、Alpha版、Classic版、战斗测试8C、部分愚人节版、最新快照版本和最新基岩版）的Minecraft服务器
-- 相比[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)，ViaFabricPlus更深层地修改了客户端代码，几乎不会触发服务器反作弊
+- 相比[ViaVersion](#viaversion)，ViaFabricPlus更深层地修改了客户端代码，几乎不会触发服务器反作弊
 - ViaFabricPlus支持连接最新的基岩版服务器，这通过[ViaBedrock]()实现，但缺少部分功能
 - ViaFabricPlus支持连接Beta版、Alpha版、Classic版等，由[ViaLegacy]()实现
 
 ### [ViaForge](https://www.mcmod.cn/class/5728.html)（Forge客户端）
 
-- ViaForge是面向Forge的[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)客户端实现
+- ViaForge是面向Forge的[ViaVersion](#viaversion)客户端实现
 - ViaForge支持连接以下版本的服务器
 
         正式版 1.0.0 - 1.21.4
@@ -49,22 +49,22 @@
 
 ### [ViaAAS](https://github.com/ViaVersion/VIAaaS)
 
-- ViaAAS是一个独立的[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)代理服务，能无缝地将不同版本的Minecraft客户端连接到同一台后端服务器
+- ViaAAS是一个独立的[ViaVersion](#viaversion)代理服务，能无缝地将不同版本的Minecraft客户端连接到同一台后端服务器
 - ViaAAS还拥有一个便捷的网页认证系统，确保在线模式下的安全连接。
 
 ### [ViaProxy](https://github.com/ViaVersion/ViaProxy)
 
-- ViaProxy是一个独立的[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)代理服务，允许玩家加入每个Minecraft服务器版本（由[ViaLegacy]()支持）
+- ViaProxy是一个独立的[ViaVersion](#viaversion)代理服务，允许玩家加入每个Minecraft服务器版本（由[ViaLegacy]()支持）
 - 允许加入联机模式服务器和Minecraft Realms，支持[Simple Voice Chat](https://www.mcmod.cn/class/3693.html)
 - 有图形界面
 
 ### [ViaBungee](https://hangar.papermc.io/ViaVersion/ViaBungee)（BungeeCord）
 
-- 1.21.x的[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)BungeeCord实现
+- 1.21.x的[ViaVersion](#viaversion)BungeeCord实现
 
 ### [ViaSponge](https://modrinth.com/plugin/viasponge)（Sponge）
 
-- 1.21.x的[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)Sponge实现
+- 1.21.x的[ViaVersion](#viaversion)Sponge实现
 
 ### [ViaAprilFools](https://www.mcmod.cn/class/16366.html)（Fabric/Spigot/Velocity）
 
@@ -107,7 +107,7 @@
 ### [ViaVanillaPlus](https://www.mcmod.cn/class/12665.html)（Fabric）
 
 - ViaVanillaPlus用于处理Vanilla+类型模组不同版本之间的网络协议更改，可作为[ViaFabricPlus]()的附属使用
-- 需要[ViaVersion](#ViaVersion（Fabric/Spigot/Velocity）)/[ViaFabric]()作为前置
+- 需要[ViaVersion](#viaversion)/[ViaFabric]()作为前置
 - 目前支持模组：
 
         Carpet
