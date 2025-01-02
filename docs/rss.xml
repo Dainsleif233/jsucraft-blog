@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsucraft.buzz</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg</url><title>avatar</title><link>https://blog.jsucraft.buzz</link></image><lastBuildDate>Wed, 11 Dec 2024 16:44:35 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>Via系列、Geyser等跨版本、跨平台Mod、插件的简单介绍</title><link>https://blog.jsucraft.buzz/post/10.html</link><description>### 写在前面&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsucraft.buzz</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg</url><title>avatar</title><link>https://blog.jsucraft.buzz</link></image><lastBuildDate>Thu, 02 Jan 2025 12:50:00 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>编写脚本实现自动云备份</title><link>https://blog.jsucraft.buzz/post/11.html</link><description>### 写在前面&#13;
+&#13;
+担心服务器存档损坏？担心硬盘损坏导致服务器不复存在？&#13;
+本文将通过编写简单的脚本来实现本地备份，并通过搭建WebDav来实现云备份。</description><guid isPermaLink="true">https://blog.jsucraft.buzz/post/11.html</guid><pubDate>Thu, 02 Jan 2025 12:49:28 +0000</pubDate></item><item><title>Via系列、Geyser等跨版本、跨平台Mod、插件的简单介绍</title><link>https://blog.jsucraft.buzz/post/10.html</link><description>### 写在前面&#13;
 &#13;
 本文主要介绍以下内容：&#13;
 &#13;
