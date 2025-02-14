@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="### 写在前面
+
+本文主要介绍以下内容：
+
+1. ViaVersion系列（[ViaVersion](#viaversion（fabric/spigot/velocity）)、[ViaBackwards](#viabackwards（fabric/spigot/velocity）)、[ViaRewind](#viarewind（fabric/spigot/velocity）)、[ViaFabric](#viafabric（fabric）)、[ViaFabricPlus](#viafabricplus（fabric客户端）)、[ViaForge](#viaforge（forge客户端）)、[ViaAAS](#viaaas)、[ViaProxy](#viaproxy)、[ViaBungee](#viabungee（bungeecord）)、[ViaSponge](#viasponge（sponge）)、[ViaAprilFools](#viaaprilfools（fabric/spigot/velocity）)、[ViaLegacy](#vialegacy（spigot/velocity）)、[ViaRewindLegacySupport](#viarewindlegacysupport（spigot/velocity）)）
+2. 其他项目（[MultiConnect](#multiconnect（fabric）)、[ViaForgePlus](#viaforgeplus（forge）)、[ViaVanillaPlus](#viavanillaplus（fabric）)、[ViaBedrock](#viabedrock（spigot/velocity）)）
+3. Geyser系列（[Geyser](#geyser（fabric/neoforge/spigot/velocity/bungeecord/viaproxy）)、[Floodgate](#floodgate（fabric/spigot/bungeecord/velocity）)、[ThirdPartyCosmetics](#thirdpartycosmetics)、[Hurricane](#hurricane（fabric/neoforge/spigot）)、[GeyserConnect](#geyserconnect)）
+
+## 开始！
+
+### [ViaVersion](https://www.mcmod.cn/class/5760.html)（Fabric/Spigot/Velocity）
+
+- ViaVersion自身的作用是支持新版客户端连接旧版服务器（服务端和客户端都是）
+- ViaVersion及其附属只翻译了网络包，有很大概率触发服务器反作弊
+- ViaVersion在作为Fabric Mod时，需要[ViaFabric](#viafabric（fabric）)作为前置
+- 1.20.x及以下版本支持BungeeCord和Sponge，1.21.x由[ViaBungee](#viabungee（bungeecord）)和[ViaSponge](#viasponge（sponge）)支持
+
+### [ViaBackwards](https://www.mcmod.cn/class/5762.html)（Fabric/Spigot/Velocity）
+
+- ViaBackwards自身的作用是支持1.9及以上的客户端连接至新版的服务器
+- ViaBackwards需要[ViaVersion](#viaversion（fabric/spigot/velocity）)/[ViaFabric](#viafabric（fabric）)作为前置
+
+### [ViaRewind](https://www.mcmod.cn/class/5761.html)（Fabric/Spigot/Velocity）
+
+- ViaRewind自身的作用是支持1.7.X/1.8.X的客户端连接至更高版本的服务器
+- ViaRewind在1.10.x及以上服务器需要[ViaBackwards](#viabackwards（fabric/spigot/velocity）)作为前置
+
+### [ViaFabric](https://www.mcmod.cn/class/3327.html)（Fabric）
+
+- ViaFabric在Fabric客户端及服务端实现了[ViaVersion](#viaversion（fabric/spigot/velocity）)
+- ViaFabric可作为[ViaVersion](#viaversion（fabric/spigot/velocity）)的前置也可单独起作用，当[ViaFabric](#viafabric（fabric）)并未及时更新时，可以通过更新[ViaVersion](#viaversion（fabric/spigot/velocity）)来更新
+
+### [ViaFabricPlus](https://www.mcmod.cn/class/9446.html)（Fabric客户端）
+
+- ViaFabricPlus是面向客户端的[ViaFabric](#viafabric（fabric）)和[MultiConnect](#multiconnect（fabric）)替代品，可连接至几乎所有版本（包括正式版、Beta版、Alpha版、Classic版、战斗测试8C、部分愚人节版、最新快照版本和最新基岩版）的Minecraft服务器
+- 相比[ViaVersion](#viaversion（fabric/spigot/velocity）)，ViaFabricPlus更深层地修改了客户端代码，几乎不会触发服务器反作弊
+- ViaFabricPlus支持连接最新的基岩版服务器，这通过[ViaBedrock](#viabedrock（spigot/velocity）)实现，但缺少部分功能
+- ViaFabricPlus支持连接Beta版、Alpha版、Classic版等，由[ViaLegacy](#vialegacy（spigot/velocity）)实现
+
+### [ViaForge](https://www.mcmod.cn/class/5728.html)（Forge客户端）
+
+- ViaForge是面向Forge的[ViaVersion](#viaversion（fabric/spigot/velocity）)客户端实现
+- ViaForge支持连接以下版本的服务器
+
+        正式版 1.0.0 - 1.21.4
+        Beta 版 b1.0 - b1.8.1
+        Alpha 版 a1.0.15 - a1.2.6
+        Classic 版 c0.0.15 - c0.30
+
+### [ViaAAS](https://github.com/ViaVersion/VIAaaS)
+
+- ViaAAS是一个独立的[ViaVersion](#viaversion（fabric/spigot/velocity）)代理服务，能无缝地将不同版本的Minecraft客户端连接到同一台后端服务器
+- ViaAAS还拥有一个便捷的网页认证系统，确保在线模式下的安全连接。">
+<meta property="og:title" content="Via系列、Geyser等跨版本、跨平台Mod、插件的简单介绍">
+<meta property="og:description" content="### 写在前面
+
+本文主要介绍以下内容：
+
+1. ViaVersion系列（[ViaVersion](#viaversion（fabric/spigot/velocity）)、[ViaBackwards](#viabackwards（fabric/spigot/velocity）)、[ViaRewind](#viarewind（fabric/spigot/velocity）)、[ViaFabric](#viafabric（fabric）)、[ViaFabricPlus](#viafabricplus（fabric客户端）)、[ViaForge](#viaforge（forge客户端）)、[ViaAAS](#viaaas)、[ViaProxy](#viaproxy)、[ViaBungee](#viabungee（bungeecord）)、[ViaSponge](#viasponge（sponge）)、[ViaAprilFools](#viaaprilfools（fabric/spigot/velocity）)、[ViaLegacy](#vialegacy（spigot/velocity）)、[ViaRewindLegacySupport](#viarewindlegacysupport（spigot/velocity）)）
+2. 其他项目（[MultiConnect](#multiconnect（fabric）)、[ViaForgePlus](#viaforgeplus（forge）)、[ViaVanillaPlus](#viavanillaplus（fabric）)、[ViaBedrock](#viabedrock（spigot/velocity）)）
+3. Geyser系列（[Geyser](#geyser（fabric/neoforge/spigot/velocity/bungeecord/viaproxy）)、[Floodgate](#floodgate（fabric/spigot/bungeecord/velocity）)、[ThirdPartyCosmetics](#thirdpartycosmetics)、[Hurricane](#hurricane（fabric/neoforge/spigot）)、[GeyserConnect](#geyserconnect)）
+
+## 开始！
+
+### [ViaVersion](https://www.mcmod.cn/class/5760.html)（Fabric/Spigot/Velocity）
+
+- ViaVersion自身的作用是支持新版客户端连接旧版服务器（服务端和客户端都是）
+- ViaVersion及其附属只翻译了网络包，有很大概率触发服务器反作弊
+- ViaVersion在作为Fabric Mod时，需要[ViaFabric](#viafabric（fabric）)作为前置
+- 1.20.x及以下版本支持BungeeCord和Sponge，1.21.x由[ViaBungee](#viabungee（bungeecord）)和[ViaSponge](#viasponge（sponge）)支持
+
+### [ViaBackwards](https://www.mcmod.cn/class/5762.html)（Fabric/Spigot/Velocity）
+
+- ViaBackwards自身的作用是支持1.9及以上的客户端连接至新版的服务器
+- ViaBackwards需要[ViaVersion](#viaversion（fabric/spigot/velocity）)/[ViaFabric](#viafabric（fabric）)作为前置
+
+### [ViaRewind](https://www.mcmod.cn/class/5761.html)（Fabric/Spigot/Velocity）
+
+- ViaRewind自身的作用是支持1.7.X/1.8.X的客户端连接至更高版本的服务器
+- ViaRewind在1.10.x及以上服务器需要[ViaBackwards](#viabackwards（fabric/spigot/velocity）)作为前置
+
+### [ViaFabric](https://www.mcmod.cn/class/3327.html)（Fabric）
+
+- ViaFabric在Fabric客户端及服务端实现了[ViaVersion](#viaversion（fabric/spigot/velocity）)
+- ViaFabric可作为[ViaVersion](#viaversion（fabric/spigot/velocity）)的前置也可单独起作用，当[ViaFabric](#viafabric（fabric）)并未及时更新时，可以通过更新[ViaVersion](#viaversion（fabric/spigot/velocity）)来更新
+
+### [ViaFabricPlus](https://www.mcmod.cn/class/9446.html)（Fabric客户端）
+
+- ViaFabricPlus是面向客户端的[ViaFabric](#viafabric（fabric）)和[MultiConnect](#multiconnect（fabric）)替代品，可连接至几乎所有版本（包括正式版、Beta版、Alpha版、Classic版、战斗测试8C、部分愚人节版、最新快照版本和最新基岩版）的Minecraft服务器
+- 相比[ViaVersion](#viaversion（fabric/spigot/velocity）)，ViaFabricPlus更深层地修改了客户端代码，几乎不会触发服务器反作弊
+- ViaFabricPlus支持连接最新的基岩版服务器，这通过[ViaBedrock](#viabedrock（spigot/velocity）)实现，但缺少部分功能
+- ViaFabricPlus支持连接Beta版、Alpha版、Classic版等，由[ViaLegacy](#vialegacy（spigot/velocity）)实现
+
+### [ViaForge](https://www.mcmod.cn/class/5728.html)（Forge客户端）
+
+- ViaForge是面向Forge的[ViaVersion](#viaversion（fabric/spigot/velocity）)客户端实现
+- ViaForge支持连接以下版本的服务器
+
+        正式版 1.0.0 - 1.21.4
+        Beta 版 b1.0 - b1.8.1
+        Alpha 版 a1.0.15 - a1.2.6
+        Classic 版 c0.0.15 - c0.30
+
+### [ViaAAS](https://github.com/ViaVersion/VIAaaS)
+
+- ViaAAS是一个独立的[ViaVersion](#viaversion（fabric/spigot/velocity）)代理服务，能无缝地将不同版本的Minecraft客户端连接到同一台后端服务器
+- ViaAAS还拥有一个便捷的网页认证系统，确保在线模式下的安全连接。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.jsucraft.buzz/post/10.html">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg">
+<title>Via系列、Geyser等跨版本、跨平台Mod、插件的简单介绍</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Via系列、Geyser等跨版本、跨平台Mod、插件的简单介绍</h1>
+<div class="title-right">
+    <a href="https://blog.jsucraft.buzz" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Dainsleif233/jsucraft-blog/issues/10" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h3>写在前面</h3>
+<p>本文主要介绍以下内容：</p>
+<ol>
+<li>ViaVersion系列（<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a>、<a href="#viabackwards%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaBackwards</a>、<a href="#viarewind%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaRewind</a>、<a href="#viafabric%EF%BC%88fabric%EF%BC%89">ViaFabric</a>、<a href="#viafabricplus%EF%BC%88fabric%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%89">ViaFabricPlus</a>、<a href="#viaforge%EF%BC%88forge%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%89">ViaForge</a>、<a href="#viaaas">ViaAAS</a>、<a href="#viaproxy">ViaProxy</a>、<a href="#viabungee%EF%BC%88bungeecord%EF%BC%89">ViaBungee</a>、<a href="#viasponge%EF%BC%88sponge%EF%BC%89">ViaSponge</a>、<a href="#viaaprilfools%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaAprilFools</a>、<a href="#vialegacy%EF%BC%88spigot/velocity%EF%BC%89">ViaLegacy</a>、<a href="#viarewindlegacysupport%EF%BC%88spigot/velocity%EF%BC%89">ViaRewindLegacySupport</a>）</li>
+<li>其他项目（<a href="#multiconnect%EF%BC%88fabric%EF%BC%89">MultiConnect</a>、<a href="#viaforgeplus%EF%BC%88forge%EF%BC%89">ViaForgePlus</a>、<a href="#viavanillaplus%EF%BC%88fabric%EF%BC%89">ViaVanillaPlus</a>、<a href="#viabedrock%EF%BC%88spigot/velocity%EF%BC%89">ViaBedrock</a>）</li>
+<li>Geyser系列（<a href="#geyser%EF%BC%88fabric/neoforge/spigot/velocity/bungeecord/viaproxy%EF%BC%89">Geyser</a>、<a href="#floodgate%EF%BC%88fabric/spigot/bungeecord/velocity%EF%BC%89">Floodgate</a>、<a href="#thirdpartycosmetics">ThirdPartyCosmetics</a>、<a href="#hurricane%EF%BC%88fabric/neoforge/spigot%EF%BC%89">Hurricane</a>、<a href="#geyserconnect">GeyserConnect</a>）</li>
+</ol>
+<h2>开始！</h2>
+<h3><a href="https://www.mcmod.cn/class/5760.html" rel="nofollow">ViaVersion</a>（Fabric/Spigot/Velocity）</h3>
+<ul>
+<li>ViaVersion自身的作用是支持新版客户端连接旧版服务器（服务端和客户端都是）</li>
+<li>ViaVersion及其附属只翻译了网络包，有很大概率触发服务器反作弊</li>
+<li>ViaVersion在作为Fabric Mod时，需要<a href="#viafabric%EF%BC%88fabric%EF%BC%89">ViaFabric</a>作为前置</li>
+<li>1.20.x及以下版本支持BungeeCord和Sponge，1.21.x由<a href="#viabungee%EF%BC%88bungeecord%EF%BC%89">ViaBungee</a>和<a href="#viasponge%EF%BC%88sponge%EF%BC%89">ViaSponge</a>支持</li>
+</ul>
+<h3><a href="https://www.mcmod.cn/class/5762.html" rel="nofollow">ViaBackwards</a>（Fabric/Spigot/Velocity）</h3>
+<ul>
+<li>ViaBackwards自身的作用是支持1.9及以上的客户端连接至新版的服务器</li>
+<li>ViaBackwards需要<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a>/<a href="#viafabric%EF%BC%88fabric%EF%BC%89">ViaFabric</a>作为前置</li>
+</ul>
+<h3><a href="https://www.mcmod.cn/class/5761.html" rel="nofollow">ViaRewind</a>（Fabric/Spigot/Velocity）</h3>
+<ul>
+<li>ViaRewind自身的作用是支持1.7.X/1.8.X的客户端连接至更高版本的服务器</li>
+<li>ViaRewind在1.10.x及以上服务器需要<a href="#viabackwards%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaBackwards</a>作为前置</li>
+</ul>
+<h3><a href="https://www.mcmod.cn/class/3327.html" rel="nofollow">ViaFabric</a>（Fabric）</h3>
+<ul>
+<li>ViaFabric在Fabric客户端及服务端实现了<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a></li>
+<li>ViaFabric可作为<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a>的前置也可单独起作用，当<a href="#viafabric%EF%BC%88fabric%EF%BC%89">ViaFabric</a>并未及时更新时，可以通过更新<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a>来更新</li>
+</ul>
+<h3><a href="https://www.mcmod.cn/class/9446.html" rel="nofollow">ViaFabricPlus</a>（Fabric客户端）</h3>
+<ul>
+<li>ViaFabricPlus是面向客户端的<a href="#viafabric%EF%BC%88fabric%EF%BC%89">ViaFabric</a>和<a href="#multiconnect%EF%BC%88fabric%EF%BC%89">MultiConnect</a>替代品，可连接至几乎所有版本（包括正式版、Beta版、Alpha版、Classic版、战斗测试8C、部分愚人节版、最新快照版本和最新基岩版）的Minecraft服务器</li>
+<li>相比<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a>，ViaFabricPlus更深层地修改了客户端代码，几乎不会触发服务器反作弊</li>
+<li>ViaFabricPlus支持连接最新的基岩版服务器，这通过<a href="#viabedrock%EF%BC%88spigot/velocity%EF%BC%89">ViaBedrock</a>实现，但缺少部分功能</li>
+<li>ViaFabricPlus支持连接Beta版、Alpha版、Classic版等，由<a href="#vialegacy%EF%BC%88spigot/velocity%EF%BC%89">ViaLegacy</a>实现</li>
+</ul>
+<h3><a href="https://www.mcmod.cn/class/5728.html" rel="nofollow">ViaForge</a>（Forge客户端）</h3>
+<ul>
+<li>
+<p>ViaForge是面向Forge的<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a>客户端实现</p>
+</li>
+<li>
+<p>ViaForge支持连接以下版本的服务器</p>
+<pre class="notranslate"><code class="notranslate">  正式版 1.0.0 - 1.21.4
+  Beta 版 b1.0 - b1.8.1
+  Alpha 版 a1.0.15 - a1.2.6
+  Classic 版 c0.0.15 - c0.30
+</code></pre>
+</li>
+</ul>
+<h3><a href="https://github.com/ViaVersion/VIAaaS">ViaAAS</a></h3>
+<ul>
+<li>ViaAAS是一个独立的<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a>代理服务，能无缝地将不同版本的Minecraft客户端连接到同一台后端服务器</li>
+<li>ViaAAS还拥有一个便捷的网页认证系统，确保在线模式下的安全连接。</li>
+</ul>
+<h3><a href="https://github.com/ViaVersion/ViaProxy">ViaProxy</a></h3>
+<ul>
+<li>ViaProxy是一个独立的<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a>代理服务，允许玩家加入每个Minecraft服务器版本（由<a href="#vialegacy%EF%BC%88spigot/velocity%EF%BC%89">ViaLegacy</a>支持）</li>
+<li>允许加入联机模式服务器和Minecraft Realms，支持<a href="https://www.mcmod.cn/class/3693.html" rel="nofollow">Simple Voice Chat</a></li>
+<li>有图形界面</li>
+</ul>
+<h3><a href="https://hangar.papermc.io/ViaVersion/ViaBungee" rel="nofollow">ViaBungee</a>（BungeeCord）</h3>
+<ul>
+<li>1.21.x的<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a>BungeeCord实现</li>
+</ul>
+<h3><a href="https://modrinth.com/plugin/viasponge" rel="nofollow">ViaSponge</a>（Sponge）</h3>
+<ul>
+<li>1.21.x的<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a>Sponge实现</li>
+</ul>
+<h3><a href="https://www.mcmod.cn/class/16366.html" rel="nofollow">ViaAprilFools</a>（Fabric/Spigot/Velocity）</h3>
+<ul>
+<li>
+<p>ViaAprilFools需要<a href="#viabackwards%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaBackwards</a>作为前置</p>
+</li>
+<li>
+<p>支持连接到这些版本的服务端：</p>
+<pre class="notranslate"><code class="notranslate">  3D Shareware
+  20w14infinite
+  战斗测试 8C
+</code></pre>
+</li>
+<li>
+<p>支持这些版本的客户端加入：</p>
+<pre class="notranslate"><code class="notranslate">  3D Shareware
+  战斗测试 8C
+</code></pre>
+</li>
+</ul>
+<h3><a href="https://github.com/ViaVersion/ViaLegacy">ViaLegacy</a>（Spigot/Velocity）</h3>
+<ul>
+<li>
+<p>在<a href="#viaproxy">ViaProxy</a>和<a href="#viafabricplus%EF%BC%88fabric%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%89">ViaFabricPlus</a>中提供以下版本支持</p>
+<pre class="notranslate"><code class="notranslate">  Classic (c0.0.15 - c0.30 including CPE)
+  Alpha (a1.0.15 - a1.2.6)
+  Beta (b1.0 - b1.8.1)
+  Release (1.0.0 - 1.7.10)
+</code></pre>
+</li>
+</ul>
+<h3><a href="https://hangar.papermc.io/ViaVersion/ViaRewindLegacySupport" rel="nofollow">ViaRewindLegacySupport</a>（Spigot/Velocity）</h3>
+<ul>
+<li>ViaRewindLegacySupport是<a href="#viarewind%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaRewind</a>的插件，为1.7.x-1.8.x修复了一些特性</li>
+</ul>
+<h3><a href="https://www.mcmod.cn/class/3293.html" rel="nofollow">MultiConnect</a>（Fabric）</h3>
+<ul>
+<li>一个用于连接多个Minecraft服务器版本的模组，允许新版本的Minecraft上的客户端连接到较早版本（以及当前版本）上的服务器</li>
+<li>已停更</li>
+</ul>
+<h3><a href="https://www.mcmod.cn/class/14638.html" rel="nofollow">ViaForgePlus</a>（Forge）</h3>
+<ul>
+<li>只支持1.8.9</li>
+<li>ViaForgePlus还原了高版本客户端的动画和移动方式（如1.14+的1.5格潜行通过）</li>
+<li>针对客户端发包进行了修复，避免了跨版本造成的反作弊误判</li>
+</ul>
+<h3><a href="https://www.mcmod.cn/class/12665.html" rel="nofollow">ViaVanillaPlus</a>（Fabric）</h3>
+<ul>
+<li>
+<p>ViaVanillaPlus用于处理Vanilla+类型模组不同版本之间的网络协议更改，可作为<a href="#viafabricplus%EF%BC%88fabric%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%89">ViaFabricPlus</a>的附属使用</p>
+</li>
+<li>
+<p>需要<a href="#viaversion%EF%BC%88fabric/spigot/velocity%EF%BC%89">ViaVersion</a>/<a href="#viafabric%EF%BC%88fabric%EF%BC%89">ViaFabric</a>作为前置</p>
+</li>
+<li>
+<p>目前支持模组：</p>
+<pre class="notranslate"><code class="notranslate">  Carpet
+  Syncmatica（共享原理图）
+</code></pre>
+</li>
+</ul>
+<h3><a href="https://github.com/RaphiMC/ViaBedrock">ViaBedrock</a>（Spigot/Velocity）</h3>
+<ul>
+<li>ViaBedrock作为ViaVersion插件添加对MCBE服务器的支持</li>
+<li>ViaBedrock处于非常早期的开发阶段，尚未打算定期使用</li>
+</ul>
+<h3><a href="https://www.mcmod.cn/class/9757.html" rel="nofollow">Geyser</a>（Fabric/NeoForge/Spigot/Velocity/BungeeCord/ViaProxy）</h3>
+<ul>
+<li>Geyser可以让基岩版客户端加入Java版的服务器</li>
+<li>当前支持基岩版1.20.80-1.21.44与Java版1.21.3间的连接</li>
+<li>基岩版客户端可选装<a href="https://geysermc.org/download/?project=other-projects&amp;geyseroptionalpack=expanded" rel="nofollow">GeyserOptionalPack</a>资源包来修复一些特性</li>
+</ul>
+<h3><a href="https://geysermc.org/download/?project=floodgate" rel="nofollow">Floodgate</a>（Fabric/Spigot/BungeeCord/Velocity）</h3>
+<ul>
+<li>Floodgate让基岩版客户端能够使用基岩版帐户加入Java版服务器</li>
+<li>能够在Java版上查看基岩版玩家皮肤</li>
+<li>允许基岩版玩家使用全局链接或本地链接链接到Java账户</li>
+</ul>
+<h3><a href="https://geysermc.org/download/?project=other-projects&amp;thirdpartycosmetics=expanded" rel="nofollow">ThirdPartyCosmetics</a></h3>
+<ul>
+<li>Geyser的拓展，能让Java版加载第三方饰品</li>
+</ul>
+<h3><a href="https://geysermc.org/download/?project=other-projects&amp;hurricane=expanded" rel="nofollow">Hurricane</a>（Fabric/NeoForge/Spigot）</h3>
+<ul>
+<li>修复了竹子和滴水石的碰撞</li>
+<li>需要<a href="#geyser%EF%BC%88fabric/neoforge/spigot/velocity/bungeecord/viaproxy%EF%BC%89">Geyser</a>作为前置</li>
+</ul>
+<h3><a href="https://geysermc.org/download?project=other-projects&amp;geyserconnect=expanded" rel="nofollow">GeyserConnect</a></h3>
+<ul>
+<li>GeyserConnect是Geyser的一个扩展，它允许您使用单个GeyserMC代理加入多个服务器</li>
+</ul>
+<h2>推荐配置</h2>
+<h3>跨版本</h3>
+<h4>单一服务端</h4>
+<ul>
+<li>根据需要安装Via系列Mod、插件</li>
+</ul>
+<h4>群组服</h4>
+<ul>
+<li>只在代理端（推荐Velocity）安装Via系列插件</li>
+</ul>
+<h4>客户端</h4>
+<ul>
+<li>安装<a href="#viafabricplus%EF%BC%88fabric%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%89">ViaFabricPlus</a></li>
+<li>按需安装<a href="#viavanillaplus%EF%BC%88fabric%EF%BC%89">ViaVanillaPlus</a></li>
+</ul>
+<h3>跨平台</h3>
+<ul>
+<li><a href="#geyser%EF%BC%88fabric/neoforge/spigot/velocity/bungeecord/viaproxy%EF%BC%89">Geyser</a>+<a href="">GeyserOptionalPack</a>+<a href="#thirdpartycosmetics">ThirdPartyCosmetics</a>+<a href="#hurricane%EF%BC%88fabric/neoforge/spigot%EF%BC%89">Hurricane</a></li>
+</ul></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://blog.jsucraft.buzz">JSUCraft Blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("08/21/2024"!=""){
+    var startSite=new Date("08/21/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script><script>document.querySelectorAll('a').forEach(anchor => {const img = anchor.querySelector('img');if (img && img.hasAttribute('data-canonical-src')) {const canonicalSrc = img.getAttribute('data-canonical-src');anchor.setAttribute('href', canonicalSrc);img.setAttribute('src', canonicalSrc);img.removeAttribute('data-canonical-src');}});</script>
+
+</html>
