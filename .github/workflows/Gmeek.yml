@@ -8,6 +8,17 @@ on:
     - cron: "0 16 * * *"
     
 jobs:
+  close-issue:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check if user is not an owner
+        if: github.event.issue.user.login != github.repository_owner
+        run: |
+          gh issue close ${{ github.event.issue.number }}
+          gh issue comment ${{ github.event.issue.number }} --body "Only repository owners can create issues."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   build:
     name: Generate blog
     runs-on: ubuntu-20.04
