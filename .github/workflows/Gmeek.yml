@@ -9,7 +9,7 @@ on:
     
 jobs:
   close-issue:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Check if user is not an owner
         if: |
@@ -23,7 +23,7 @@ jobs:
 
   build:
     name: Generate blog
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: close-issue
     if: ${{ github.event.repository.owner.id == github.event.sender.id || github.event_name == 'schedule' }}
     permissions: write-all
@@ -85,7 +85,7 @@ jobs:
           
   deploy:
     name: Deploy blog
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: build
     permissions:
       contents: write
