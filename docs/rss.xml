@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsumc.fun</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg</url><title>avatar</title><link>https://blog.jsumc.fun</link></image><lastBuildDate>Wed, 27 Aug 2025 11:40:42 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>苏高联第六次线下聚会活动顺利举行！</title><link>https://blog.jsumc.fun/post/13.html</link><description>苏高联5月18日电 2025年5月18日苏高联（江苏Minecraft高校联合会）第六次线下聚餐活动在南京市鼓楼区举行。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/13.html</guid><pubDate>Mon, 26 May 2025 14:33:19 +0000</pubDate></item><item><title>MUA·Bingo II 赛事简报</title><link>https://blog.jsumc.fun/post/12.html</link><description>## 主办方
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsumc.fun</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg</url><title>avatar</title><link>https://blog.jsumc.fun</link></image><lastBuildDate>Wed, 27 Aug 2025 11:42:54 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>苏高联第六次线下聚会活动顺利举行！</title><link>https://blog.jsumc.fun/post/13.html</link><description>苏高联5月18日电 2025年5月18日苏高联（江苏Minecraft高校联合会）第六次线下聚餐活动在南京市鼓楼区举行。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/13.html</guid><pubDate>Mon, 26 May 2025 14:33:19 +0000</pubDate></item><item><title>MUA·Bingo II 赛事简报</title><link>https://blog.jsumc.fun/post/12.html</link><description>## 主办方
 
 MUA_MC高校联盟
 
@@ -161,9 +161,9 @@ MUA_MC高校联盟
 ## 在线原理图
 
 - [上传原理图](https://mc.syshub.top/schem/)
-- 在游戏中使用“/schem load url:&lt;下载key&gt;”命令获取原理图
-- 在游戏中复制选区后使用“/schem share”命令或“/download”命令下载原理图
-- 可直接下载[官方老接口fawe](https://schem.intellectualsites.com/fawe/index.php)、[官方新接口schem](https://schematic.cloud/)和[阿尔萨斯工业园](https://schem.alsace.team/)的下载key，只需在他们key后分别加上&amp;#64;fawe、&amp;#64;schem和&amp;#64;alsace，例如：“//schem load url:a53d5cc322e856a2705f248f39cd927d@alsace”可直接下载上传到工业园的原理图
+- 在游戏中使用`/schem load url:&lt;下载key&gt;`命令获取原理图
+- 在游戏中复制选区后使用`/schem share`命令或`/download`命令下载原理图
+- 可直接下载[官方老接口fawe](https://schem.intellectualsites.com/fawe/index.php)、[官方新接口schem](https://schematic.cloud/)和[阿尔萨斯工业园](https://schem.alsace.team/)的下载key，只需在他们key后分别加上`@fawe`、`@schem`和`@alsace`，例如：`//schem load url:a53d5cc322e856a2705f248f39cd927d@alsace`可直接下载上传到工业园的原理图
 
 ## 网页地图
 
@@ -182,8 +182,8 @@ MUA_MC高校联盟
 
 ### 体素模型
 
-- 在游戏内使用“/execute in ujs run tp ~ ~ ~”命令前往体素模型
-- 使用“/execute in overworld run tp ~ ~ ~”命令回到主世界
+- 在游戏内使用`/execute in ujs run tp ~ ~ ~`命令前往体素模型
+- 使用`/execute in overworld run tp ~ ~ ~`命令回到主世界
 。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/8.html</guid><pubDate>Sat, 02 Nov 2024 07:05:04 +0000</pubDate></item><item><title>方块江大（一期）策划案</title><link>https://blog.jsumc.fun/post/7.html</link><description>#### 主办：江苏大学独角兽电娱社MC分部&#13;
 &#13;
 #### 承办：方块江大建筑组&#13;
