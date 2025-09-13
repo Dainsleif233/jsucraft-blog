@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="## 前言
+
+本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。">
+<meta property="og:title" content="升级Yggdrasil-Connect插件并部署Janus">
+<meta property="og:description" content="## 前言
+
+本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.jsumc.fun/post/14.html">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg">
+<title>升级Yggdrasil-Connect插件并部署Janus</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">升级Yggdrasil-Connect插件并部署Janus</h1>
+<div class="title-right">
+    <a href="https://blog.jsumc.fun" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Dainsleif233/jsucraft-blog/issues/14" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h2>前言</h2>
+<p>本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。使用的机器为 Debian 11 x86_64 0.5G，因此也是在小内存机器上部署的教程。使用的皮肤站数据库为 Sqlite。</p>
+<h2>备份皮肤站</h2>
+<p>操作前请务必备份皮肤站数据库和插件，以免过程中出现错误导致损失。</p>
+<h2>升级 Yggdrasil-Connect 插件</h2>
+<ol>
+<li><strong>禁用</strong>并删除旧版插件。</li>
+<li>在 <code class="notranslate">插件管理-从远程下载-URL</code> 中填写下载连接 <code class="notranslate">https://mc.sjtu.cn/union</code> 安装新版插件。在 <code class="notranslate">插件管理</code> 中启用插件。</li>
+<li>连接终端并打开皮肤站根目录，执行：
+<div class="highlight highlight-source-shell"><pre class="notranslate">php artisan yggc:fix-uuid-table
+php artisan yggc:create-personal-access-client</pre></div>
+第一条命令清除了 UUID 表中可能存在的异常数据。第二条命令创建了一个个人访问客户端，返回 <code class="notranslate">Client ID</code>。</li>
+<li>在 <code class="notranslate">.env</code> 中新建一条配置
+<div class="highlight highlight-source-dotenv"><pre class="notranslate"><span class="pl-v">PASSPORT_PERSONAL_ACCESS_CLIENT_ID</span><span class="pl-k">=</span></pre></div>
+值为命令返回的个人访问客户端的 <code class="notranslate">Client ID</code>。</li>
+<li>在 <code class="notranslate">插件管理</code> 中禁用和启用插件一次。</li>
+</ol>
+<h2>部署 Janus</h2>
+<p>本节中：</p>
+<ul>
+<li><code class="notranslate">{site_url}</code> 表示皮肤站 Url，例如：<code class="notranslate">https://skin.jsumc.fun</code>。</li>
+<li><code class="notranslate">{janus_url}</code> 表示 Janus 的 Url，必须为 https，例如：<code class="notranslate">https://skin.jsumc.fun/api/janus</code>。</li>
+<li><code class="notranslate">{client_id}</code> 表示上文获取的 <code class="notranslate">Client ID</code>，例如：<code class="notranslate">1</code>。</li>
+</ul>
+<p>注意替换。</p>
+<ol>
+<li>
+<p>皮肤站禁用 <code class="notranslate">隐藏「高级功能」菜单</code> 插件，在 <code class="notranslate">高级功能-OAuth2 应用</code> 中对应上文 <code class="notranslate">Client ID</code> 的 <code class="notranslate">回调 URL</code> 中填入 <code class="notranslate">{site_url}/yggc/client/public</code>。</p>
+</li>
+<li>
+<p>安装 Node.js 22 到<strong>你的 PC</strong> 和<strong>皮肤站服务器</strong>。</p>
+</li>
+<li>
+<p>下载 Janus 源码到<strong>你的 PC</strong>，仓库地址：</p>
+<ul>
+<li>MySQL：<a href="https://github.com/bs-community/janus.git">https://github.com/bs-community/janus.git</a></li>
+<li>PostgreSQL：<a href="https://github.com/Tobby-000/janus.git">https://github.com/Tobby-000/janus.git</a></li>
+<li>SQLite：<a href="https://github.com/Dainsleif233/janus.git">https://github.com/Dainsleif233/janus.git</a></li>
+</ul>
+</li>
+<li>
+<p>设置数据表前缀，检查<strong>皮肤站</strong>的 <code class="notranslate">.env</code> 配置，若 <code class="notranslate">DB_PREFIX</code> 不存在或为空则跳过这步。将 <strong>Janus</strong> 的 <code class="notranslate">prisma</code> 目录下的 <code class="notranslate">schema.prisma.example</code> 文件重命名为 <code class="notranslate">schema.prisma</code> 并编辑，在<strong>每一个</strong> Model 的 @<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Map/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Map">@Map</a>() 中填写的数据表名前添加前缀：</p>
+<div class="highlight highlight-source-prisma"><pre class="notranslate"><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">AuthorizationCode</span> {</span>
+<span class="pl-s1">    <span class="pl-c">// ...</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-s1"><span class="pl-en">@@map</span>(<span class="pl-s">"</span><span class="pl-s">yggc_authorization_codes</span><span class="pl-s">"</span>)</span> <span class="pl-c">// &lt;- 修改这里的数据表名，添加表前缀</span></span>
+<span class="pl-s1">    <span class="pl-c">// @@map("skin_yggc_authorization_codes") &lt;- 如果你的 DB_PREFIX 是 skin_，就在表名前面加上 skin_</span></span>
+<span class="pl-s1">}</span></pre></div>
+</li>
+<li>
+<p>修改源码：</p>
+<p>在 <code class="notranslate">schema.prisma</code> 中修改 <code class="notranslate">generator client</code> 为以下内容：</p>
+<div class="highlight highlight-source-prisma"><pre class="notranslate"><span class="pl-s1"><span class="pl-k">generator</span> <span class="pl-en">client</span> {</span>
+<span class="pl-s1">    <span class="pl-smi">provider</span> <span class="pl-k">=</span> <span class="pl-s">"</span><span class="pl-s">prisma-client-js</span><span class="pl-s">"</span></span>
+<span class="pl-s1">    <span class="pl-smi">binaryTargets</span> <span class="pl-k">=</span> <span class="pl-s1">[<span class="pl-s">"</span><span class="pl-s">native</span><span class="pl-s">"</span>, <span class="pl-s">"</span><span class="pl-s">debian-openssl-1.1.x</span><span class="pl-s">"</span>]</span></span>
+<span class="pl-s1">}</span></pre></div>
+<p><code class="notranslate">debian-openssl-1.1.x</code> 换成<strong>皮肤站服务器</strong>实际的系统：</p>
+<pre class="notranslate"><code class="notranslate">Windows: windows
+macOS Intel: darwin
+macOS M1/M2/M3: darwin-arm64
+Ubuntu/Debian x64: debian-openssl-1.1.x
+Ubuntu/Debian ARM64: linux-arm64-openssl-1.1.x
+Alpine Linux x64: linux-musl
+Alpine Linux ARM64: linux-musl-arm64-openssl-1.1.x
+RHEL/CentOS/Oracle: rhel-openssl-1.1.x
+</code></pre>
+<p><code class="notranslate">1.1.x</code> 需要换成实际的openssl 版本，可通过 <code class="notranslate">openssl version</code> 命令查看。</p>
+<p>在 <code class="notranslate">src/app.controller.ts</code> 中修改 <code class="notranslate">getHello</code>(L36) 为以下内容：</p>
+<div class="highlight highlight-source-ts"><pre class="notranslate">@<span class="pl-v">All</span><span class="pl-kos">(</span><span class="pl-s">"/{*path}"</span><span class="pl-kos">)</span>
+<span class="pl-s1">getHello</span><span class="pl-kos">(</span>@<span class="pl-v">Req</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-s1">req</span>: <span class="pl-smi">Request</span><span class="pl-kos">,</span> @<span class="pl-v">Res</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-s1">res</span>: <span class="pl-smi">Response</span><span class="pl-kos">)</span>: <span class="pl-smi">Promise</span><span class="pl-c1">&lt;</span><span class="pl-smi"><span class="pl-k">void</span></span><span class="pl-c1">&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">req</span><span class="pl-kos">.</span><span class="pl-c1">url</span> <span class="pl-c1">=</span> <span class="pl-s1">req</span><span class="pl-kos">.</span><span class="pl-c1">originalUrl</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-s">"/api/janus"</span><span class="pl-kos">,</span> <span class="pl-s">""</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">return</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">appService</span><span class="pl-kos">.</span><span class="pl-en">callback</span><span class="pl-kos">(</span><span class="pl-s1">req</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p>在 <code class="notranslate">src/main.ts</code> 中在 <code class="notranslate">app.enable('trust proxy');</code>(L27) 后插入以下内容：</p>
+<div class="highlight highlight-source-ts"><pre class="notranslate"><span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">setGlobalPrefix</span><span class="pl-kos">(</span><span class="pl-s">'api/janus'</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p>在 <code class="notranslate">src/oidc-provider.service.ts</code> 中修改 <code class="notranslate">url</code>(L127) 为以下内容：</p>
+<div class="highlight highlight-source-ts"><pre class="notranslate"><span class="pl-en">url</span><span class="pl-kos">(</span><span class="pl-s1">ctx</span><span class="pl-kos">,</span> <span class="pl-s1">interaction</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">prompt</span> <span class="pl-c1">=</span> <span class="pl-s1">interaction</span><span class="pl-kos">.</span><span class="pl-c1">prompt</span><span class="pl-kos">;</span>
+    <span class="pl-k">return</span> <span class="pl-s">`/api/janus/interaction/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">interaction</span><span class="pl-kos">.</span><span class="pl-c1">uid</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>
+<p><code class="notranslate">/api/janus</code> 需要根据实际的 {janus_url} 替换。</p>
+</li>
+<li>
+<p>修改配置文件，将 <strong>Janus</strong> 根目录的 <code class="notranslate">.env.example</code> 重命名为 <code class="notranslate">.env</code> 并编辑：</p>
+<div class="highlight highlight-source-dotenv"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 服务端口</span>
+<span class="pl-v">PORT</span><span class="pl-k">=</span><span class="pl-s">3000</span>
+
+<span class="pl-c"><span class="pl-c">#</span> MySQL / PostgreSQL</span>
+<span class="pl-c"><span class="pl-c">#</span> 数据库 IP</span>
+<span class="pl-v">DB_HOST</span><span class="pl-k">=</span>
+<span class="pl-c"><span class="pl-c">#</span> 数据库端口</span>
+<span class="pl-v">DB_PORT</span><span class="pl-k">=</span>
+<span class="pl-c"><span class="pl-c">#</span> 数据库用户名</span>
+<span class="pl-v">DB_USERNAME</span><span class="pl-k">=</span>
+<span class="pl-c"><span class="pl-c">#</span> 数据库密码</span>
+<span class="pl-v">DB_PASSWORD</span><span class="pl-k">=</span>
+<span class="pl-c"><span class="pl-c">#</span> 数据库名称</span>
+<span class="pl-v">DB_NAME</span><span class="pl-k">=</span>
+
+<span class="pl-c"><span class="pl-c">#</span> SQLite</span>
+<span class="pl-c"><span class="pl-c">#</span> 数据库文件路径（相对于 prisma 目录），推荐使用绝对路径</span>
+<span class="pl-v">DATABASE_URL</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>file:/path/to/data.db<span class="pl-pds">"</span></span>
+
+<span class="pl-v">ISSUER</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>{janus_url}<span class="pl-pds">"</span></span>
+<span class="pl-v">BS_SITE_URL</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>{site_url}<span class="pl-pds">"</span></span>
+<span class="pl-v">SHARED_CLIENT_ID</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>{client_id}<span class="pl-pds">"</span></span>
+
+<span class="pl-c"><span class="pl-c">#</span> 其余配置项无需修改</span></pre></div>
+<p>先将数据库配置设置为能从<strong>你的 PC</strong> 访问的地址，SQLite 把数据库文件下载到<strong>你的 PC</strong>。</p>
+</li>
+<li>
+<p>安装依赖并构建应用，运行命令：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">npm i
+npm run build</pre></div>
+</li>
+<li>
+<p>迁移数据库，确保能连接到数据库，可使用 <code class="notranslate">npx prisma migrate status</code> 命令检查数据库迁移状态，执行命令迁移数据库：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">npx prisma migrate resolve --applied 0_init
+npx prisma migrate deploy</pre></div>
+</li>
+<li>
+<p>部署到<strong>皮肤站服务器</strong>，删除 <code class="notranslate">node_modules</code> 文件夹，运行命令安装生产依赖并生成 Prisma 客户端：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">npm i --omit=dev
+npx prisma generate</pre></div>
+<p>将 <code class="notranslate">dist</code>、<code class="notranslate">node_modules</code> 和 <code class="notranslate">.env</code> 打包上传到<strong>皮肤站服务器</strong>，部署目录自选。修改<code class="notranslate">.env</code>中的数据库配置为<strong>皮肤站服务器</strong>访问数据库的地址。SQLite 把<strong>你的 PC</strong> 的数据库文件上传覆盖回<strong>皮肤站服务器</strong>。</p>
+<p>将<strong>皮肤站目录</strong>下的 storage/oauth-private.key 复制到 <strong>Janus 部署目录</strong>。</p>
+<p>使用 <code class="notranslate">node dist/main.js</code> 命令试运行看有无报错。</p>
+</li>
+<li>
+<p>配置守护进程，这里以 systemd 为例，在 <code class="notranslate">/etc/systemd/system/</code> 下创建 <code class="notranslate">janus-daemon.service</code> 文件，内容如下：</p>
+<div class="highlight highlight-source-toml"><pre class="notranslate">[<span class="pl-en">Unit</span>]
+<span class="pl-smi">Description</span>=J<span class="pl-ii">anus-Daemon</span>
+
+[<span class="pl-en">Service</span>]
+<span class="pl-smi">WorkingDirectory</span>=/<span class="pl-ii">path/to/janus</span>
+<span class="pl-smi">ExecStart</span>=n<span class="pl-ii">ode dist/main.js</span>
+<span class="pl-smi">ExecReload</span>=k<span class="pl-ii">ill -s QUIT $MAINPID</span>
+<span class="pl-smi">ExecStop</span>=k<span class="pl-ii">ill -s QUIT $MAINPID</span>
+
+[<span class="pl-en">Install</span>]
+<span class="pl-smi">WantedBy</span>=m<span class="pl-ii">ulti-user.target</span></pre></div>
+<p><code class="notranslate">/path/to/janus</code> 设置为实际的 <strong>Janus 部署目录</strong>。</p>
+<p>使用以下命令启用守护进程并设置开机自启：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">systemctl daemon-reload
+systemctl start janus-daemon.service
+systemctl <span class="pl-c1">enable</span> janus-daemon.service</pre></div>
+</li>
+<li>
+<p>配置反向代理，这里以 Nginx 为例，反代 Janus 服务端口到皮肤站地址，这样可以直接使用皮肤站的 SSL，在皮肤站 nginx 文件的 server 块中添加以下内容：</p>
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-k">location</span> <span class="pl-en">/api/janus </span>{
+    <span class="pl-k">proxy_set_header</span> Host <span class="pl-smi">$host</span>;
+    <span class="pl-k">proxy_set_header</span> X-Real-IP <span class="pl-smi">$remote_addr</span>;
+    <span class="pl-k">proxy_set_header</span> X-Forwarded-For <span class="pl-smi">$proxy_add_x_forwarded_for</span>;
+    <span class="pl-k">proxy_set_header</span> X-Forwarded-Proto <span class="pl-smi">$scheme</span>;
+    <span class="pl-k">proxy_redirect</span><span class="pl-c1"> off</span>;
+    <span class="pl-k">proxy_pass</span> http://localhost:3000;
+    }</pre></div>
+<p><code class="notranslate">/api/janus</code> 和 端口 <code class="notranslate">3000</code> 根据实际配置设置。<strong>注意</strong>：<code class="notranslate">/api/janus</code> 和 <code class="notranslate">http://localhost:3000</code> 后不要加 <code class="notranslate">/</code></p>
+<p>运行 <code class="notranslate">systemctl restart nginx</code> 命令重启 Nginx。</p>
+</li>
+</ol>
+<h2>一些坑</h2>
+<ol>
+<li><code class="notranslate">binaryTargets</code> 不好确定可以先不设置，部署到<strong>皮肤站服务器</strong>后根据运行报错在<strong>你的 PC</strong> 设置后重复步骤 9。</li>
+</ol></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://blog.jsumc.fun">JSUCraft Blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("08/21/2024"!=""){
+    var startSite=new Date("08/21/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script><script>document.querySelectorAll('a').forEach(anchor => {const img = anchor.querySelector('img');if (img && img.hasAttribute('data-canonical-src')) {const canonicalSrc = img.getAttribute('data-canonical-src');anchor.setAttribute('href', canonicalSrc);img.setAttribute('src', canonicalSrc);img.removeAttribute('data-canonical-src');}});</script>
+
+</html>
