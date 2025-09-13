@@ -217,17 +217,17 @@ npx prisma generate</pre></div>
 </li>
 <li>
 <p>配置守护进程，这里以 systemd 为例，在 <code class="notranslate">/etc/systemd/system/</code> 下创建 <code class="notranslate">janus-daemon.service</code> 文件，内容如下：</p>
-<div class="highlight highlight-source-toml"><pre class="notranslate">[<span class="pl-en">Unit</span>]
-<span class="pl-smi">Description</span>=J<span class="pl-ii">anus-Daemon</span>
+<div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-en">[Unit]</span>
+<span class="pl-k">Description</span>=Janus-Daemon
 
-[<span class="pl-en">Service</span>]
-<span class="pl-smi">WorkingDirectory</span>=/<span class="pl-ii">path/to/janus</span>
-<span class="pl-smi">ExecStart</span>=n<span class="pl-ii">ode dist/main.js</span>
-<span class="pl-smi">ExecReload</span>=k<span class="pl-ii">ill -s QUIT $MAINPID</span>
-<span class="pl-smi">ExecStop</span>=k<span class="pl-ii">ill -s QUIT $MAINPID</span>
+<span class="pl-en">[Service]</span>
+<span class="pl-k">WorkingDirectory</span>=/path/to/janus
+<span class="pl-k">ExecStart</span>=node dist/main.js
+<span class="pl-k">ExecReload</span>=kill -s QUIT $MAINPID
+<span class="pl-k">ExecStop</span>=kill -s QUIT $MAINPID
 
-[<span class="pl-en">Install</span>]
-<span class="pl-smi">WantedBy</span>=m<span class="pl-ii">ulti-user.target</span></pre></div>
+<span class="pl-en">[Install]</span>
+<span class="pl-k">WantedBy</span>=multi-user.target</pre></div>
 <p><code class="notranslate">/path/to/janus</code> 设置为实际的 <strong>Janus 部署目录</strong>。</p>
 <p>使用以下命令启用守护进程并设置开机自启：</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">systemctl daemon-reload

@@ -141,7 +141,7 @@
     使用 `node dist/main.js` 命令试运行看有无报错。
 
 10. 配置守护进程，这里以 systemd 为例，在 `/etc/systemd/system/` 下创建 `janus-daemon.service` 文件，内容如下：
-    ```toml
+    ```ini
     [Unit]
     Description=Janus-Daemon
 
