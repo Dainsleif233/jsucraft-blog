@@ -38,7 +38,7 @@
     - MySQL：https://github.com/bs-community/janus.git
     - PostgreSQL：https://github.com/Tobby-000/janus.git
     - SQLite：https://github.com/Dainsleif233/janus.git
-4. 设置数据表前缀，检查**皮肤站**的 `.env` 配置，若 `DB_PREFIX` 不存在或为空则跳过这步。将 **Janus** 的 `prisma` 目录下的 `schema.prisma.example` 文件重命名为 `schema.prisma` 并编辑，在**每一个** Model 的 @@map() 中填写的数据表名前添加前缀：
+4. 设置数据表前缀，检查**皮肤站**的 `.env` 配置，若 `DB_PREFIX` 不存在或为空则跳过这步。将 **Janus** 的 `prisma` 目录下的 `schema.prisma.example` 文件重命名为 `schema.prisma` 并编辑，在**每一个** Model 的 `@@map()` 中填写的数据表名前添加前缀：
     ```prisma
     model AuthorizationCode {
         // ...

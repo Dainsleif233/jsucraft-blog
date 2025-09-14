@@ -128,7 +128,7 @@ php artisan yggc:create-personal-access-client</pre></div>
 </ul>
 </li>
 <li>
-<p>设置数据表前缀，检查<strong>皮肤站</strong>的 <code class="notranslate">.env</code> 配置，若 <code class="notranslate">DB_PREFIX</code> 不存在或为空则跳过这步。将 <strong>Janus</strong> 的 <code class="notranslate">prisma</code> 目录下的 <code class="notranslate">schema.prisma.example</code> 文件重命名为 <code class="notranslate">schema.prisma</code> 并编辑，在<strong>每一个</strong> Model 的 @<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Map/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Map">@Map</a>() 中填写的数据表名前添加前缀：</p>
+<p>设置数据表前缀，检查<strong>皮肤站</strong>的 <code class="notranslate">.env</code> 配置，若 <code class="notranslate">DB_PREFIX</code> 不存在或为空则跳过这步。将 <strong>Janus</strong> 的 <code class="notranslate">prisma</code> 目录下的 <code class="notranslate">schema.prisma.example</code> 文件重命名为 <code class="notranslate">schema.prisma</code> 并编辑，在<strong>每一个</strong> Model 的 <code class="notranslate">@@map()</code> 中填写的数据表名前添加前缀：</p>
 <div class="highlight highlight-source-prisma"><pre class="notranslate"><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">AuthorizationCode</span> {</span>
 <span class="pl-s1">    <span class="pl-c">// ...</span></span>
 <span class="pl-s1"></span>
