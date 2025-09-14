@@ -67,7 +67,7 @@
     Alpine Linux ARM64: linux-musl-arm64-openssl-1.1.x
     RHEL/CentOS/Oracle: rhel-openssl-1.1.x
     ```
-    `1.1.x` 需要换成实际的openssl 版本，可通过 `openssl version` 命令查看。
+    `1.1.x` 需要换成实际的 openssl 版本，可通过 `openssl version` 命令查看。
 
     在 `src/app.controller.ts` 中修改 `getHello`(L36) 为以下内容：
     ```typescript
@@ -90,7 +90,7 @@
         return `/api/janus/interaction/${interaction.uid}`;
     },
     ```
-    `/api/janus` 需要根据实际的 {janus_url} 替换。
+    `/api/janus` 需要根据实际的 `{janus_url}` 替换。
 6. 修改配置文件，将 **Janus** 根目录的 `.env.example` 重命名为 `.env` 并编辑：
     ```env
     # 服务端口
@@ -176,6 +176,107 @@
     `/api/janus` 和 端口 `3000` 根据实际配置设置。**注意**：`/api/janus` 和 `http://localhost:3000` 后不要加 `/`
 
     运行 `systemctl restart nginx` 命令重启 Nginx。
+
+## 修改前端
+
+修改前端页面以统一授权页面风格，这一步是**步骤5**的拓展，修改完成后需要重新构建 `dist` 目录上传到**皮肤站服务器**。
+
+1. 修改 `oidc-provider.service.ts` 文件，在 `OIDCProviderService` 类中添加以下代码：
+    ```typescript
+    // 填写皮肤站站点名和站点图标 Url
+    private readonly siteName = '';
+    private readonly favicon = '';
+
+    generateHtml(title: string, content: string) {
+        return `<!DOCTYPE html>
+            <html lang="zh-CN">
+                <head>
+                    <meta charset="utf-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+                    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="">
+                    <link href="https://bs-cdn.yecdn.com/6.0.2/public/app/style.7eb5d06.css" rel="stylesheet" crossorigin="anonymous">
+                    <link rel="shortcut icon" href="${this.favicon}">
+                    <link rel="icon" type="image/png" href="${this.favicon}" sizes="192x192">
+                    <link rel="apple-touch-icon" href="${this.favicon}" sizes="180x180">
+                    <link href="https://bs-cdn.yecdn.com/6.0.2/public/app/home-css.bef20ec.css" rel="stylesheet" crossorigin="anonymous">
+                    <title>${title} - ${this.siteName}</title>
+                </head>
+                <body class="hold-transition login-page">
+                    <div class="login-box">
+                        <div class="login-logo">
+                            <a href="${this.siteUrl}">${this.siteName}</a>
+                        </div>
+                        <div class="card">
+                            <div class="card-body login-card-body">
+                                ${content}
+                            </div>
+                        </div>
+                    </div>
+                </body>
+            </html>`
+    }
+
+    async successSource(ctx: oidc.KoaContextWithOIDC) {
+        const content = `
+            <div class="text-center py-5">
+                <i class="far fa-check-circle text-success fa-5x mb-4" aria-hidden="true"></i>
+                <h5 class="text-success mb-0">登录成功</h5>
+            </div>`;
+        ctx.body = this.generateHtml('登录成功', content);
+    }
+
+    async userCodeConfirmSource(ctx: oidc.KoaContextWithOIDC, form: String, _client: any, _deviceInfo: any, userCode: String) {
+        const content = `
+            <p class="login-box-msg">登录至 ${ctx.oidc.client?.clientName || ctx.oidc.client?.clientId}</p>
+            <main>
+                <div class="alert alert-info">请确认以下授权码与您的应用中显示的授权码相符。</div>
+                    <div class="mb-3 text-center" style="font-size: 1.6em; font-weight: bold; font-family: Minecraft;">${userCode}</div>
+                <div class="alert alert-warning">
+                    <i class="icon fas fa-exclamation-triangle"></i>如果您没有发起此操作，或者该授权码与您的应用中显示的授权码不匹配，请关闭此窗口或点击取消。
+                </div>
+                ${form}
+                <button class="btn btn-success btn-block" type="submit" form="op.deviceConfirmForm">继续</button>
+                <button class="btn btn-default btn-block" type="submit" form="op.deviceConfirmForm" value="yes" name="abort">取消</button>
+            </main>`;
+        ctx.body = this.generateHtml('授权', content);
+    }
+
+    async userCodeInputSource(ctx: oidc.KoaContextWithOIDC, form: String, _out: any, err: any) {
+        let msg: string;
+        if (err && (err.userCode || err.name === 'NoCodeError')) msg = '您输入的代码不正确，请重试';
+        else if (err && err.name === 'AbortedError') msg = '登录请求被中断';
+        else if (err) msg = '处理请求时发生错误';
+        else msg = '请输入您设备上显示的代码';
+
+        const content = `
+            <p class="login-box-msg">授予应用访问权限</p>
+            <main>
+                <div class="alert alert-danger">${msg}</div>
+                <div class="form-group">${form}</div>
+                <div class="alert alert-warning">
+                    <i class="icon fas fa-exclamation-triangle"></i>请勿输入来自你不信任的来源的授权码，以免造成个人隐私泄露和账号安全问题。
+                </div>
+                <button class="btn btn-success btn-block" type="submit" form="op.deviceInputForm">继续</button>
+            </main>
+            <script>
+                input = document.getElementsByName('user_code')[0];
+                input.placeholder = '输入应用中显示的授权码';
+                input.classList.add('form-control');
+            </script>`;
+        ctx.body = this.generateHtml('授权', content);
+    }
+    ```
+
+2. 修改 `provider` 构建方法中的 `deviceFlow` 为：
+    ```typescript
+    deviceFlow: {
+        enabled: true,
+        successSource: this.successSource.bind(this),
+        userCodeConfirmSource: this.userCodeConfirmSource.bind(this),
+        userCodeInputSource: this.userCodeInputSource.bind(this)
+    }
+    ```
 
 ## 一些坑
 
