@@ -129,7 +129,7 @@
     npx prisma migrate resolve --applied 0_init
     npx prisma migrate deploy
     ```
-9. 部署到**皮肤站服务器**，删除 `node_modules` 文件夹，运行命令安装生产依赖并生成 Prisma 客户端：
+9. 部署到**皮肤站服务器**，运行命令移除开发依赖并生成 Prisma 客户端：
     ```bash
     npm i --omit=dev
     npx prisma generate

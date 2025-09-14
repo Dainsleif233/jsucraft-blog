@@ -208,7 +208,7 @@ npm run build</pre></div>
 npx prisma migrate deploy</pre></div>
 </li>
 <li>
-<p>部署到<strong>皮肤站服务器</strong>，删除 <code class="notranslate">node_modules</code> 文件夹，运行命令安装生产依赖并生成 Prisma 客户端：</p>
+<p>部署到<strong>皮肤站服务器</strong>，运行命令移除开发依赖并生成 Prisma 客户端：</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">npm i --omit=dev
 npx prisma generate</pre></div>
 <p>将 <code class="notranslate">dist</code>、<code class="notranslate">node_modules</code> 和 <code class="notranslate">.env</code> 打包上传到<strong>皮肤站服务器</strong>，部署目录自选。修改<code class="notranslate">.env</code>中的数据库配置为<strong>皮肤站服务器</strong>访问数据库的地址。SQLite 把<strong>你的 PC</strong> 的数据库文件上传覆盖回<strong>皮肤站服务器</strong>。</p>
