@@ -171,7 +171,7 @@
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_redirect off;
         proxy_pass http://localhost:3000;
-        }
+    }
     ```
     `/api/janus` 和 端口 `3000` 根据实际配置设置。**注意**：`/api/janus` 和 `http://localhost:3000` 后不要加 `/`
 

@@ -243,7 +243,7 @@ systemctl <span class="pl-c1">enable</span> janus-daemon.service</pre></div>
     <span class="pl-k">proxy_set_header</span> X-Forwarded-Proto <span class="pl-smi">$scheme</span>;
     <span class="pl-k">proxy_redirect</span><span class="pl-c1"> off</span>;
     <span class="pl-k">proxy_pass</span> http://localhost:3000;
-    }</pre></div>
+}</pre></div>
 <p><code class="notranslate">/api/janus</code> 和 端口 <code class="notranslate">3000</code> 根据实际配置设置。<strong>注意</strong>：<code class="notranslate">/api/janus</code> 和 <code class="notranslate">http://localhost:3000</code> 后不要加 <code class="notranslate">/</code></p>
 <p>运行 <code class="notranslate">systemctl restart nginx</code> 命令重启 Nginx。</p>
 </li>
