@@ -10,12 +10,16 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="### 写在前面
+<meta name="description" content="*作者：UpSGE*
+
+### 写在前面
 
 担心服务器存档损坏？担心硬盘损坏导致服务器不复存在？
 本文将通过编写简单的脚本来实现本地备份，并通过搭建WebDav来实现云备份。">
 <meta property="og:title" content="编写脚本实现自动云备份">
-<meta property="og:description" content="### 写在前面
+<meta property="og:description" content="*作者：UpSGE*
+
+### 写在前面
 
 担心服务器存档损坏？担心硬盘损坏导致服务器不复存在？
 本文将通过编写简单的脚本来实现本地备份，并通过搭建WebDav来实现云备份。">
@@ -89,7 +93,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h3>写在前面</h3>
+<div class="markdown-body" id="postBody"><p><em>作者：UpSGE</em></p>
+<h3>写在前面</h3>
 <p>担心服务器存档损坏？担心硬盘损坏导致服务器不复存在？<br>
 本文将通过编写简单的脚本来实现本地备份，并通过搭建WebDav来实现云备份。</p>
 <h3>本地备份</h3>
@@ -115,7 +120,7 @@ find "${BACKUPS_DIR}" -type d -mmin +180 -delete
 </code></pre>
 <h3>云备份</h3>
 <p>将本地备份的文件打包压缩后上传至云盘等，以防止硬件损坏导致存档丢失。</p>
-<p>这里云服务以<del>Alist</del>（此项目已经被卖给商业公司，不推荐使用）的WebDav为例，压缩方式以Gzip为例，编写一个shell脚本实现云备份</p>
+<p>这里云服务以Alist的WebDav为例，压缩方式以Gzip为例，编写一个shell脚本实现云备份</p>
 <pre class="notranslate"><code class="notranslate">#!/bin/bash
 
 #备份目录

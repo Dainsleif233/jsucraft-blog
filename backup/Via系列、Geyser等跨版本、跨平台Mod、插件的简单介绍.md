@@ -1,3 +1,5 @@
+*作者：UpSGE*
+
 ### 写在前面
 
 本文主要介绍以下内容：
@@ -42,7 +44,7 @@
 - ViaForge是面向Forge的[ViaVersion](#viaversion（fabric/spigot/velocity）)客户端实现
 - ViaForge支持连接以下版本的服务器
 
-        正式版 1.0.0 - 1.21.4
+        正式版 1.0.0 - 1.21.8
         Beta 版 b1.0 - b1.8.1
         Alpha 版 a1.0.15 - a1.2.6
         Classic 版 c0.0.15 - c0.30
@@ -121,7 +123,7 @@
 ### [Geyser](https://www.mcmod.cn/class/9757.html)（Fabric/NeoForge/Spigot/Velocity/BungeeCord/ViaProxy）
 
 - Geyser可以让基岩版客户端加入Java版的服务器
-- 当前支持基岩版1.20.80-1.21.44与Java版1.21.3间的连接
+- 当前支持基岩版1.21.70 - 1.21.101与Java版1.21.7 - 1.21.8间的连接
 - 基岩版客户端可选装[GeyserOptionalPack](https://geysermc.org/download/?project=other-projects&geyseroptionalpack=expanded)资源包来修复一些特性
 
 ### [Floodgate](https://geysermc.org/download/?project=floodgate)（Fabric/Spigot/BungeeCord/Velocity）
