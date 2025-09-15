@@ -10,11 +10,15 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## 前言
+<meta name="description" content="*作者：UpSGE*
+
+## 前言
 
 本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。">
 <meta property="og:title" content="皮肤站升级Yggdrasil-Connect插件并部署Janus">
-<meta property="og:description" content="## 前言
+<meta property="og:description" content="*作者：UpSGE*
+
+## 前言
 
 本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。">
 <meta property="og:type" content="article">
@@ -87,7 +91,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h2>前言</h2>
+<div class="markdown-body" id="postBody"><p><em>作者：UpSGE</em></p>
+<h2>前言</h2>
 <p>本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。使用的机器为 Debian 11 x86_64 0.5G，因此也是在小内存机器上部署的教程。使用的皮肤站数据库为 Sqlite。</p>
 <h2>备份皮肤站</h2>
 <p>操作前请务必备份皮肤站数据库和插件，以免过程中出现错误导致损失。</p>
@@ -347,6 +352,8 @@ systemctl <span class="pl-c1">enable</span> janus-daemon.service</pre></div>
 <span class="pl-kos">}</span></pre></div>
 </li>
 </ol>
+<h2>配置独立 Client ID</h2>
+<p>配置完以上步骤后，就可以在支持 Yggdrasil-Connect 协议的启动器使用了，不过现在是所有启动器共用一个公共的 Client ID，要为每个启动器配置一个独立 Client ID，只需要在<code class="notranslate">高级功能-OAuth2 应用</code> 中创建一个新的应用，<code class="notranslate">应用名</code>为启动器名，<code class="notranslate">回调 URL</code> 中填入 <code class="notranslate">{site_url}/yggc/client/public</code>，再将新的 <code class="notranslate">Client ID</code> 提交给启动器开发者。</p>
 <h2>一些坑</h2>
 <ol>
 <li><code class="notranslate">binaryTargets</code> 不好确定可以先不设置，部署到<strong>皮肤站服务器</strong>后根据运行报错在<strong>你的 PC</strong> 设置后重复步骤 9。</li>

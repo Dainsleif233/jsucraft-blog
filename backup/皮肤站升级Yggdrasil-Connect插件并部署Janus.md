@@ -1,3 +1,5 @@
+*作者：UpSGE*
+
 ## 前言
 
 本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。使用的机器为 Debian 11 x86_64 0.5G，因此也是在小内存机器上部署的教程。使用的皮肤站数据库为 Sqlite。
@@ -277,6 +279,10 @@
         userCodeInputSource: this.userCodeInputSource.bind(this)
     }
     ```
+
+## 配置独立 Client ID
+
+配置完以上步骤后，就可以在支持 Yggdrasil-Connect 协议的启动器使用了，不过现在是所有启动器共用一个公共的 Client ID，要为每个启动器配置一个独立 Client ID，只需要在`高级功能-OAuth2 应用` 中创建一个新的应用，`应用名`为启动器名，`回调 URL` 中填入 `{site_url}/yggc/client/public`，再将新的 `Client ID` 提交给启动器开发者。
 
 ## 一些坑
 
