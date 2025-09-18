@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsumc.fun</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg</url><title>avatar</title><link>https://blog.jsumc.fun</link></image><lastBuildDate>Thu, 18 Sep 2025 14:33:04 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>江苏大学复原风格指导</title><link>https://blog.jsumc.fun/post/15.html</link><description>*作者：\_YEEZ\_*
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsumc.fun</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg</url><title>avatar</title><link>https://blog.jsumc.fun</link></image><lastBuildDate>Thu, 18 Sep 2025 14:35:33 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>江苏大学复原风格指导</title><link>https://blog.jsumc.fun/post/15.html</link><description>*作者：\_YEEZ\_*
 
 ## 一、前言
 
@@ -198,7 +198,10 @@ MUA_MC高校联盟
 
 - 在游戏内使用`/execute in ujs run tp ~ ~ ~`命令前往体素模型
 - 使用`/execute in overworld run tp ~ ~ ~`命令回到主世界
-。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/8.html</guid><pubDate>Sat, 02 Nov 2024 07:05:04 +0000</pubDate></item><item><title>方块江大（一期）策划案</title><link>https://blog.jsumc.fun/post/7.html</link><description>#### 主办：江苏大学独角兽电娱社MC分部&#13;
+
+### 风格指导
+
+- [江苏大学复原风格指导](https://blog.jsumc.fun/post/15.html)。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/8.html</guid><pubDate>Sat, 02 Nov 2024 07:05:04 +0000</pubDate></item><item><title>方块江大（一期）策划案</title><link>https://blog.jsumc.fun/post/7.html</link><description>#### 主办：江苏大学独角兽电娱社MC分部&#13;
 &#13;
 #### 承办：方块江大建筑组&#13;
 &#13;
