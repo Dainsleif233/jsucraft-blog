@@ -241,14 +241,14 @@ systemctl <span class="pl-c1">enable</span> janus-daemon.service</pre></div>
 </li>
 <li>
 <p>配置反向代理，这里以 Nginx 为例，反代 Janus 服务端口到皮肤站地址，这样可以直接使用皮肤站的 SSL，在皮肤站 nginx 文件的 server 块中添加以下内容：</p>
-<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-k">location</span> <span class="pl-en">/api/janus </span>{
-    <span class="pl-k">proxy_set_header</span> Host <span class="pl-smi">$host</span>;
-    <span class="pl-k">proxy_set_header</span> X-Real-IP <span class="pl-smi">$remote_addr</span>;
-    <span class="pl-k">proxy_set_header</span> X-Forwarded-For <span class="pl-smi">$proxy_add_x_forwarded_for</span>;
-    <span class="pl-k">proxy_set_header</span> X-Forwarded-Proto <span class="pl-smi">$scheme</span>;
-    <span class="pl-k">proxy_redirect</span><span class="pl-c1"> off</span>;
-    <span class="pl-k">proxy_pass</span> http://localhost:3000;
-}</pre></div>
+<div class="highlight highlight-source-nginx"><pre class="notranslate"><span class="pl-c1">location</span> /api/janus <span class="pl-c1">{</span>
+    <span class="pl-c1">proxy_set_header</span> Host <span class="pl-v">$host</span><span class="pl-c1">;</span>
+    <span class="pl-c1">proxy_set_header</span> X-Real-IP <span class="pl-v">$remote_addr</span><span class="pl-c1">;</span>
+    <span class="pl-c1">proxy_set_header</span> X-Forwarded-For <span class="pl-v">$proxy_add_x_forwarded_for</span><span class="pl-c1">;</span>
+    <span class="pl-c1">proxy_set_header</span> X-Forwarded-Proto <span class="pl-v">$scheme</span><span class="pl-c1">;</span>
+    <span class="pl-c1">proxy_redirect</span> off<span class="pl-c1">;</span>
+    <span class="pl-c1">proxy_pass</span> <span class="pl-c1">http</span>://localhost:<span class="pl-c1">3000</span><span class="pl-c1">;</span>
+<span class="pl-c1">}</span></pre></div>
 <p><code class="notranslate">/api/janus</code> 和 端口 <code class="notranslate">3000</code> 根据实际配置设置。<strong>注意</strong>：<code class="notranslate">/api/janus</code> 和 <code class="notranslate">http://localhost:3000</code> 后不要加 <code class="notranslate">/</code></p>
 <p>运行 <code class="notranslate">systemctl restart nginx</code> 命令重启 Nginx。</p>
 </li>
