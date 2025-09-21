@@ -14,18 +14,18 @@
 
 ### 写在前面
 
-本文以CMCC-EDU为例，实现自动认证。">
+本文以 CMCC-EDU 为例，实现自动认证。">
 <meta property="og:title" content="CMCC-EDU自动授权">
 <meta property="og:description" content="*作者：UpSGE*
 
 ### 写在前面
 
-本文以CMCC-EDU为例，实现自动认证。">
+本文以 CMCC-EDU 为例，实现自动认证。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.jsumc.fun/post/9.html">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6725c6e7d29ded1a8c6695b3.jpg">
 <title>CMCC-EDU自动授权</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -93,10 +93,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><p><em>作者：UpSGE</em></p>
 <h3>写在前面</h3>
-<p>本文以CMCC-EDU为例，实现自动认证。其他使用web认证的网络可以参考。</p>
+<p>本文以 CMCC-EDU 为例，实现自动认证。其他使用 web 认证的网络可以参考。</p>
 <p>不想看原理解析，直接跳转到<a href="#%E5%BA%94%E7%94%A8%EF%BC%88%E6%8A%84%E4%BD%9C%E4%B8%9A%EF%BC%89">抄作业</a></p>
 <h3>抓包</h3>
-<p>连接网络，进入认证页面<a href="http://192.168.253.6/" rel="nofollow">http://192.168.253.6/</a></p>
+<p>连接网络，进入认证页面 <a href="http://192.168.253.6/" rel="nofollow">http://192.168.253.6/</a></p>
 <p>打开dev-tools，监听网络连接，输入账号密码认证</p>
 <p>查看第一条连接，得到以下信息</p>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/02b8410922f1b359dd78abcb9ba6390543807c15ca3fd2376970283508b3fcb0/68747470733a2f2f7069632e696d6764622e636e2f6974656d2f3637343935363237643065306132343364346461633037332e706e67"><img src="https://camo.githubusercontent.com/02b8410922f1b359dd78abcb9ba6390543807c15ca3fd2376970283508b3fcb0/68747470733a2f2f7069632e696d6764622e636e2f6974656d2f3637343935363237643065306132343364346461633037332e706e67" alt="alt text" data-canonical-src="https://pic.imgdb.cn/item/67495627d0e0a243d4dac073.png" style="max-width: 100%;"></a></p>
@@ -112,56 +112,61 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </code></pre>
 <h3>分析</h3>
 <p>提取可能的关键参数</p>
-<pre class="notranslate"><code class="notranslate">user_account
+<pre class="notranslate"><code class="notranslate">host
+user_account
 user_password
+wlan_ac_ip
 wlan_user_ip
 wlan_user_mac
 Cookie
 </code></pre>
 <p>经测试，关键参数及格式如下</p>
-<pre class="notranslate"><code class="notranslate">user_account=,0,学号@cmcc
+<pre class="notranslate"><code class="notranslate">host=域名（可通过自动重定向获得）
+user_account=,0,学号@cmcc
 user_password=密码
-wlan_user_ip=ip地址
+wlan_ac_ip=AC的ip地址（根据规律为host-1）
+wlan_user_ip=本机ip地址
 </code></pre>
 <p>最简的curl命令如下</p>
-<pre class="notranslate"><code class="notranslate">curl "http://192.168.253.6:801/eportal/?wlan_ac_ip=192.168.253.5&amp;c=Portal&amp;a=login&amp;callback=dr1003&amp;login_method=1&amp;user_account=,0,${学号}@cmcc&amp;user_password=${密码}&amp;wlan_user_ip=${ip地址}"
-</code></pre>
-<p>并且最终获得授权的设备ip为curl命令中wlan_user_ip参数的ip，与发包ip无关</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">curl <span class="pl-s"><span class="pl-pds">"</span>http://<span class="pl-smi">${host}</span>:801/eportal/?c=Portal&amp;a=login&amp;callback=dr1003&amp;login_method=1&amp;wlan_ac_ip=<span class="pl-smi">${host-1}</span>&amp;user_account=,0,<span class="pl-smi">${学号}</span>@cmcc&amp;user_password=<span class="pl-smi">${密码}</span>&amp;wlan_user_ip=<span class="pl-smi">${ip地址}</span><span class="pl-pds">"</span></span></pre></div>
+<p>并且最终获得授权的设备 ip 为 curl 命令中 wlan_user_ip 参数的 ip，与发包 ip无关</p>
 <h3>应用（抄作业）</h3>
-<p>至此，便可以配合ping命令检测网络，ip命令获取ip，来实现自动认证</p>
+<p>至此，便可以配合 ping 命令检测网络，ip 命令获取 ip，来实现自动认证</p>
 <p>完整代码</p>
-<pre class="notranslate"><code class="notranslate">#!/bin/sh
-#检测网络
-check() {
-    if ping -c 1 -W 5 8.8.8.8 &gt; /dev/null 2&gt;&amp;1;
-    then
-        return 0
-    else
-        return 1
-    fi
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#!</span>/bin/sh</span>
+<span class="pl-c"><span class="pl-c">#</span> 检测网络</span>
+<span class="pl-en">check</span>() {
+    <span class="pl-k">if</span> ping -c 1 -W 5 8.8.8.8 <span class="pl-k">&gt;</span> /dev/null <span class="pl-k">2&gt;&amp;1</span><span class="pl-k">;</span>
+    <span class="pl-k">then</span>
+        <span class="pl-k">return</span> 0
+    <span class="pl-k">else</span>
+        <span class="pl-k">return</span> 1
+    <span class="pl-k">fi</span>
 }
-#认证
-auth() {
-    #获取ip
-    ip=$(ip addr show CMCC | grep "inet " | awk '{print $2}' | cut -d/ -f1)
-    #学号
-    user=""
-    #密码
-    pwd=""
-    #记录日志
-    echo $ip &gt;&gt; auth-cmcc.log
-    #认证
-    curl "http://192.168.253.6:801/eportal/?wlan_ac_ip=192.168.253.5&amp;c=Portal&amp;a=login&amp;callback=dr1003&amp;login_method=1&amp;user_account=,0,${user}@cmcc&amp;user_password=${pwd}&amp;wlan_user_ip=${ip}" &gt;&gt; auth-cmcc.log
-}
-#判断是否能联网，若不能则进行认证
-if ! check; then
+<span class="pl-c"><span class="pl-c">#</span> 认证</span>
+<span class="pl-en">auth</span>() {
+    <span class="pl-c"><span class="pl-c">#</span> 获取ip</span>
+    ip=<span class="pl-s"><span class="pl-pds">$(</span>ip addr show CMCC <span class="pl-k">|</span> grep <span class="pl-s"><span class="pl-pds">"</span>inet <span class="pl-pds">"</span></span> <span class="pl-k">|</span> awk <span class="pl-s"><span class="pl-pds">'</span>{print $2}<span class="pl-pds">'</span></span> <span class="pl-k">|</span> cut -d/ -f1<span class="pl-pds">)</span></span>
+    <span class="pl-c"><span class="pl-c">#</span> 根据重定向获取host</span>
+    host=<span class="pl-s"><span class="pl-pds">$(</span>curl -Ls -o /dev/null -w <span class="pl-s"><span class="pl-pds">"</span>%{url_effective}\n<span class="pl-pds">"</span></span> www.baidu.com <span class="pl-k">|</span> awk -F/ <span class="pl-s"><span class="pl-pds">'</span>{print $3}<span class="pl-pds">'</span></span><span class="pl-pds">)</span></span>
+    <span class="pl-c"><span class="pl-c">#</span> host-1</span>
+    ac=<span class="pl-s"><span class="pl-pds">$(</span>echo <span class="pl-smi">${host}</span> <span class="pl-k">|</span> awk -F. -vOFS=. <span class="pl-s"><span class="pl-pds">'</span>{$NF--; print}<span class="pl-pds">'</span></span><span class="pl-pds">)</span></span>
+    <span class="pl-c"><span class="pl-c">#</span> 学号</span>
+    user=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>
+    <span class="pl-c"><span class="pl-c">#</span> 密码</span>
+    pwd=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>
+    <span class="pl-c"><span class="pl-c">#</span> 记录日志</span>
+    <span class="pl-c1">echo</span> <span class="pl-smi">$ip</span> <span class="pl-k">&gt;&gt;</span> auth-cmcc.log
+    <span class="pl-c"><span class="pl-c">#</span> 认证</span>
+    curl <span class="pl-s"><span class="pl-pds">"</span>http://<span class="pl-smi">${host}</span>:801/eportal/?c=Portal&amp;a=login&amp;callback=dr1003&amp;login_method=1&amp;wlan_ac_ip=<span class="pl-smi">${ac}</span>&amp;user_account=,0,<span class="pl-smi">${user}</span>@cmcc&amp;user_password=<span class="pl-smi">${pwd}</span>&amp;wlan_user_ip=<span class="pl-smi">${ip}</span><span class="pl-pds">"</span></span> <span class="pl-k">&gt;&gt;</span> auth-cmcc.log
+    }
+<span class="pl-c"><span class="pl-c">#</span>判断是否能联网，若不能则进行认证</span>
+<span class="pl-k">if</span> <span class="pl-k">!</span> check<span class="pl-k">;</span> <span class="pl-k">then</span>
     auth
-fi
-</code></pre>
+<span class="pl-k">fi</span></pre></div>
 <p>利用cron实现自动执行</p>
-<pre class="notranslate"><code class="notranslate">#7:00到22:59每分钟执行一次
-* 7-22 * * * /path/to/auth-cmcc.sh
-</code></pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>7:00到22:59每分钟执行一次</span>
+<span class="pl-k">*</span> 7-22 <span class="pl-k">*</span> <span class="pl-k">*</span> <span class="pl-k">*</span> /path/to/auth-cmcc.sh</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 </div>
