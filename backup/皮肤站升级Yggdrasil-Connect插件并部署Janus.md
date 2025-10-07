@@ -35,12 +35,13 @@
 注意替换。
 
 1. 皮肤站禁用 `隐藏「高级功能」菜单` 插件，在 `高级功能-OAuth2 应用` 中对应上文 `Client ID` 的 `回调 URL` 中填入 `{site_url}/yggc/client/public`。
-2. 安装 Node.js 22 到**你的 PC** 和**皮肤站服务器**。
-3. 下载 Janus 源码到**你的 PC**，仓库地址：
+2. 在 `Yggdrasil Connect 配置` 中设置 `OpenID 提供者标识符` 为 `{janus_url}`。
+3. 安装 Node.js 22 到**你的 PC** 和**皮肤站服务器**。
+4. 下载 Janus 源码到**你的 PC**，仓库地址：
     - MySQL：https://github.com/bs-community/janus.git
     - PostgreSQL：https://github.com/Tobby-000/janus.git
     - SQLite：https://github.com/Dainsleif233/janus.git
-4. 设置数据表前缀，检查**皮肤站**的 `.env` 配置，若 `DB_PREFIX` 不存在或为空则跳过这步。将 **Janus** 的 `prisma` 目录下的 `schema.prisma.example` 文件重命名为 `schema.prisma` 并编辑，在**每一个** Model 的 `@@map()` 中填写的数据表名前添加前缀：
+5. 设置数据表前缀，检查**皮肤站**的 `.env` 配置，若 `DB_PREFIX` 不存在或为空则跳过这步。将 **Janus** 的 `prisma` 目录下的 `schema.prisma.example` 文件重命名为 `schema.prisma` 并编辑，在**每一个** Model 的 `@@map()` 中填写的数据表名前添加前缀：
     ```prisma
     model AuthorizationCode {
         // ...
@@ -49,7 +50,7 @@
         // @@map("skin_yggc_authorization_codes") <- 如果你的 DB_PREFIX 是 skin_，就在表名前面加上 skin_
     }
     ```
-5. 修改源码：
+6. 修改源码：
 
     在 `schema.prisma` 中修改 `generator client` 为以下内容：
     ```prisma
@@ -93,7 +94,7 @@
     },
     ```
     `/api/janus` 需要根据实际的 `{janus_url}` 替换。
-6. 修改配置文件，将 **Janus** 根目录的 `.env.example` 重命名为 `.env` 并编辑：
+7. 修改配置文件，将 **Janus** 根目录的 `.env.example` 重命名为 `.env` 并编辑：
     ```env
     # 服务端口
     PORT=3000
@@ -121,17 +122,17 @@
     # 其余配置项无需修改
     ```
     先将数据库配置设置为能从**你的 PC** 访问的地址，SQLite 把数据库文件下载到**你的 PC**。
-7. 安装依赖并构建应用，运行命令：
+8. 安装依赖并构建应用，运行命令：
     ```bash
     npm i
     npm run build
     ```
-8. 迁移数据库，确保能连接到数据库，可使用 `npx prisma migrate status` 命令检查数据库迁移状态，执行命令迁移数据库：
+9. 迁移数据库，确保能连接到数据库，可使用 `npx prisma migrate status` 命令检查数据库迁移状态，执行命令迁移数据库：
     ```bash
     npx prisma migrate resolve --applied 0_init
     npx prisma migrate deploy
     ```
-9. 部署到**皮肤站服务器**，运行命令移除开发依赖并生成 Prisma 客户端：
+10. 部署到**皮肤站服务器**，运行命令移除开发依赖并生成 Prisma 客户端：
     ```bash
     npm i --omit=dev
     npx prisma generate
@@ -142,7 +143,7 @@
 
     使用 `node dist/main.js` 命令试运行看有无报错。
 
-10. 配置守护进程，这里以 systemd 为例，在 `/etc/systemd/system/` 下创建 `janus-daemon.service` 文件，内容如下：
+11. 配置守护进程，这里以 systemd 为例，在 `/etc/systemd/system/` 下创建 `janus-daemon.service` 文件，内容如下：
     ```ini
     [Unit]
     Description=Janus-Daemon
@@ -164,7 +165,7 @@
     systemctl start janus-daemon.service
     systemctl enable janus-daemon.service
     ```
-11. 配置反向代理，这里以 Nginx 为例，反代 Janus 服务端口到皮肤站地址，这样可以直接使用皮肤站的 SSL，在皮肤站 nginx 文件的 server 块中添加以下内容：
+12. 配置反向代理，这里以 Nginx 为例，反代 Janus 服务端口到皮肤站地址，这样可以直接使用皮肤站的 SSL，在皮肤站 nginx 文件的 server 块中添加以下内容：
     ```nginx
     location /api/janus {
         proxy_set_header Host $host;
@@ -181,7 +182,7 @@
 
 ## 修改前端
 
-修改前端页面以统一授权页面风格，这一步是**步骤5**的拓展，修改完成后需要重新构建 `dist` 目录上传到**皮肤站服务器**。
+修改前端页面以统一授权页面风格，这一步是**步骤6**的拓展，修改完成后需要重新构建 `dist` 目录上传到**皮肤站服务器**。
 
 1. 修改 `oidc-provider.service.ts` 文件，在 `OIDCProviderService` 类中添加以下代码：
     ```typescript
@@ -286,4 +287,4 @@
 
 ## 一些坑
 
-1. `binaryTargets` 不好确定可以先不设置，部署到**皮肤站服务器**后根据运行报错在**你的 PC** 设置后重复步骤 9。
+1. `binaryTargets` 不好确定可以先不设置，部署到**皮肤站服务器**后根据运行报错在**你的 PC** 设置后重复步骤 10。

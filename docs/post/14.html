@@ -122,6 +122,9 @@ php artisan yggc:create-personal-access-client</pre></div>
 <p>皮肤站禁用 <code class="notranslate">隐藏「高级功能」菜单</code> 插件，在 <code class="notranslate">高级功能-OAuth2 应用</code> 中对应上文 <code class="notranslate">Client ID</code> 的 <code class="notranslate">回调 URL</code> 中填入 <code class="notranslate">{site_url}/yggc/client/public</code>。</p>
 </li>
 <li>
+<p>在 <code class="notranslate">Yggdrasil Connect 配置</code> 中设置 <code class="notranslate">OpenID 提供者标识符</code> 为 <code class="notranslate">{janus_url}</code>。</p>
+</li>
+<li>
 <p>安装 Node.js 22 到<strong>你的 PC</strong> 和<strong>皮肤站服务器</strong>。</p>
 </li>
 <li>
@@ -254,7 +257,7 @@ systemctl <span class="pl-c1">enable</span> janus-daemon.service</pre></div>
 </li>
 </ol>
 <h2>修改前端</h2>
-<p>修改前端页面以统一授权页面风格，这一步是<strong>步骤5</strong>的拓展，修改完成后需要重新构建 <code class="notranslate">dist</code> 目录上传到<strong>皮肤站服务器</strong>。</p>
+<p>修改前端页面以统一授权页面风格，这一步是<strong>步骤6</strong>的拓展，修改完成后需要重新构建 <code class="notranslate">dist</code> 目录上传到<strong>皮肤站服务器</strong>。</p>
 <ol>
 <li>
 <p>修改 <code class="notranslate">oidc-provider.service.ts</code> 文件，在 <code class="notranslate">OIDCProviderService</code> 类中添加以下代码：</p>
@@ -356,7 +359,7 @@ systemctl <span class="pl-c1">enable</span> janus-daemon.service</pre></div>
 <p>配置完以上步骤后，就可以在支持 Yggdrasil-Connect 协议的启动器使用了，不过现在是所有启动器共用一个公共的 Client ID，要为每个启动器配置一个独立 Client ID，只需要在<code class="notranslate">高级功能-OAuth2 应用</code> 中创建一个新的应用，<code class="notranslate">应用名</code>为启动器名，<code class="notranslate">回调 URL</code> 中填入 <code class="notranslate">{site_url}/yggc/client/public</code>，再将新的 <code class="notranslate">Client ID</code> 提交给启动器开发者。</p>
 <h2>一些坑</h2>
 <ol>
-<li><code class="notranslate">binaryTargets</code> 不好确定可以先不设置，部署到<strong>皮肤站服务器</strong>后根据运行报错在<strong>你的 PC</strong> 设置后重复步骤 9。</li>
+<li><code class="notranslate">binaryTargets</code> 不好确定可以先不设置，部署到<strong>皮肤站服务器</strong>后根据运行报错在<strong>你的 PC</strong> 设置后重复步骤 10。</li>
 </ol></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
