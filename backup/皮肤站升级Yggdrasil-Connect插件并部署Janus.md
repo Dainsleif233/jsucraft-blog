@@ -13,7 +13,7 @@
 1. **禁用**并删除旧版插件。
 2. 在 `插件管理-从远程下载-URL` 中填写下载连接 `https://mc.sjtu.cn/union` 安装新版插件。在 `插件管理` 中启用插件。
 3. 连接终端并打开皮肤站根目录，执行：
-    ```shell
+    ```bash
     php artisan yggc:fix-uuid-table
     php artisan yggc:create-personal-access-client
     ```
@@ -52,25 +52,28 @@
     ```
 6. 修改源码：
 
-    在 `schema.prisma` 中修改 `generator client` 为以下内容：
+    在 `schema.prisma` 中修改 `generator client` 为以下内容（直接在**皮肤站服务器**构建则**不需要**改这里）：
     ```prisma
     generator client {
         provider = "prisma-client-js"
         binaryTargets = ["native", "debian-openssl-1.1.x"]
     }
     ```
-    `debian-openssl-1.1.x` 换成**皮肤站服务器**实际的系统：
+    `debian-openssl-1.1.x` 换成**皮肤站服务器**实际的系统和 openssl 版本，以下为所有可选项：
     ```
-    Windows: windows
-    macOS Intel: darwin
-    macOS M1/M2/M3: darwin-arm64
-    Ubuntu/Debian x64: debian-openssl-1.1.x
-    Ubuntu/Debian ARM64: linux-arm64-openssl-1.1.x
-    Alpine Linux x64: linux-musl
-    Alpine Linux ARM64: linux-musl-arm64-openssl-1.1.x
-    RHEL/CentOS/Oracle: rhel-openssl-1.1.x
+    darwin, darwin-arm64,
+    debian-openssl-1.0.x, debian-openssl-1.1.x, debian-openssl-3.0.x,
+    rhel-openssl-1.0.x, rhel-openssl-1.1.x, rhel-openssl-3.0.x,
+    linux-arm64-openssl-1.1.x, linux-arm64-openssl-1.0.x, linux-arm64-openssl-3.0.x,
+    linux-arm-openssl-1.1.x, linux-arm-openssl-1.0.x, linux-arm-openssl-3.0.x,
+    linux-musl, linux-musl-openssl-3.0.x,
+    linux-musl-arm64-openssl-1.1.x, linux-musl-arm64-openssl-3.0.x,
+    linux-nixos,
+    linux-static-x64, linux-static-arm64,
+    windows,
+    freebsd11, freebsd12, freebsd13, freebsd14, freebsd15,
+    openbsd, netbsd, arm
     ```
-    `1.1.x` 需要换成实际的 openssl 版本，可通过 `openssl version` 命令查看。
 
     在 `src/app.controller.ts` 中修改 `getHello`(L36) 为以下内容：
     ```typescript
@@ -139,7 +142,7 @@
     ```
     将 `dist`、`node_modules` 和 `.env` 打包上传到**皮肤站服务器**，部署目录自选。修改`.env`中的数据库配置为**皮肤站服务器**访问数据库的地址。SQLite 把**你的 PC** 的数据库文件上传覆盖回**皮肤站服务器**。
 
-    将**皮肤站目录**下的 storage/oauth-private.key 复制到 **Janus 部署目录**。
+    将**皮肤站目录**下的 `storage/oauth-private.key` 复制到 **Janus 部署目录**。
 
     使用 `node dist/main.js` 命令试运行看有无报错。
 
@@ -182,7 +185,7 @@
 
 ## 修改前端
 
-修改前端页面以统一授权页面风格，这一步是**步骤6**的拓展，修改完成后需要重新构建 `dist` 目录上传到**皮肤站服务器**。
+修改前端页面以统一授权页面风格，这一步是**步骤 6**的拓展，修改完成后需要重新构建 `dist` 目录上传到**皮肤站服务器**。
 
 1. 修改 `oidc-provider.service.ts` 文件，在 `OIDCProviderService` 类中添加以下代码：
     ```typescript
@@ -287,4 +290,4 @@
 
 ## 一些坑
 
-1. `binaryTargets` 不好确定可以先不设置，部署到**皮肤站服务器**后根据运行报错在**你的 PC** 设置后重复步骤 10。
+1. 皮肤站 `站点配置` 中 `站点地址（URL）` 必须填写。

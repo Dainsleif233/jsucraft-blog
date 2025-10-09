@@ -146,22 +146,25 @@ php artisan yggc:create-personal-access-client</pre></div>
 </li>
 <li>
 <p>修改源码：</p>
-<p>在 <code class="notranslate">schema.prisma</code> 中修改 <code class="notranslate">generator client</code> 为以下内容：</p>
+<p>在 <code class="notranslate">schema.prisma</code> 中修改 <code class="notranslate">generator client</code> 为以下内容（直接在<strong>皮肤站服务器</strong>构建则<strong>不需要</strong>改这里）：</p>
 <div class="highlight highlight-source-prisma"><pre class="notranslate"><span class="pl-s1"><span class="pl-k">generator</span> <span class="pl-en">client</span> {</span>
 <span class="pl-s1">    <span class="pl-smi">provider</span> <span class="pl-k">=</span> <span class="pl-s">"</span><span class="pl-s">prisma-client-js</span><span class="pl-s">"</span></span>
 <span class="pl-s1">    <span class="pl-smi">binaryTargets</span> <span class="pl-k">=</span> <span class="pl-s1">[<span class="pl-s">"</span><span class="pl-s">native</span><span class="pl-s">"</span>, <span class="pl-s">"</span><span class="pl-s">debian-openssl-1.1.x</span><span class="pl-s">"</span>]</span></span>
 <span class="pl-s1">}</span></pre></div>
-<p><code class="notranslate">debian-openssl-1.1.x</code> 换成<strong>皮肤站服务器</strong>实际的系统：</p>
-<pre class="notranslate"><code class="notranslate">Windows: windows
-macOS Intel: darwin
-macOS M1/M2/M3: darwin-arm64
-Ubuntu/Debian x64: debian-openssl-1.1.x
-Ubuntu/Debian ARM64: linux-arm64-openssl-1.1.x
-Alpine Linux x64: linux-musl
-Alpine Linux ARM64: linux-musl-arm64-openssl-1.1.x
-RHEL/CentOS/Oracle: rhel-openssl-1.1.x
+<p><code class="notranslate">debian-openssl-1.1.x</code> 换成<strong>皮肤站服务器</strong>实际的系统和 openssl 版本，以下为所有可选项：</p>
+<pre class="notranslate"><code class="notranslate">darwin, darwin-arm64,
+debian-openssl-1.0.x, debian-openssl-1.1.x, debian-openssl-3.0.x,
+rhel-openssl-1.0.x, rhel-openssl-1.1.x, rhel-openssl-3.0.x,
+linux-arm64-openssl-1.1.x, linux-arm64-openssl-1.0.x, linux-arm64-openssl-3.0.x,
+linux-arm-openssl-1.1.x, linux-arm-openssl-1.0.x, linux-arm-openssl-3.0.x,
+linux-musl, linux-musl-openssl-3.0.x,
+linux-musl-arm64-openssl-1.1.x, linux-musl-arm64-openssl-3.0.x,
+linux-nixos,
+linux-static-x64, linux-static-arm64,
+windows,
+freebsd11, freebsd12, freebsd13, freebsd14, freebsd15,
+openbsd, netbsd, arm
 </code></pre>
-<p><code class="notranslate">1.1.x</code> 需要换成实际的 openssl 版本，可通过 <code class="notranslate">openssl version</code> 命令查看。</p>
 <p>在 <code class="notranslate">src/app.controller.ts</code> 中修改 <code class="notranslate">getHello</code>(L36) 为以下内容：</p>
 <div class="highlight highlight-source-ts"><pre class="notranslate">@<span class="pl-v">All</span><span class="pl-kos">(</span><span class="pl-s">"/{*path}"</span><span class="pl-kos">)</span>
 <span class="pl-s1">getHello</span><span class="pl-kos">(</span>@<span class="pl-v">Req</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-s1">req</span>: <span class="pl-smi">Request</span><span class="pl-kos">,</span> @<span class="pl-v">Res</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-s1">res</span>: <span class="pl-smi">Response</span><span class="pl-kos">)</span>: <span class="pl-smi">Promise</span><span class="pl-c1">&lt;</span><span class="pl-smi"><span class="pl-k">void</span></span><span class="pl-c1">&gt;</span> <span class="pl-kos">{</span>
@@ -220,7 +223,7 @@ npx prisma migrate deploy</pre></div>
 <div class="highlight highlight-source-shell"><pre class="notranslate">npm i --omit=dev
 npx prisma generate</pre></div>
 <p>将 <code class="notranslate">dist</code>、<code class="notranslate">node_modules</code> 和 <code class="notranslate">.env</code> 打包上传到<strong>皮肤站服务器</strong>，部署目录自选。修改<code class="notranslate">.env</code>中的数据库配置为<strong>皮肤站服务器</strong>访问数据库的地址。SQLite 把<strong>你的 PC</strong> 的数据库文件上传覆盖回<strong>皮肤站服务器</strong>。</p>
-<p>将<strong>皮肤站目录</strong>下的 storage/oauth-private.key 复制到 <strong>Janus 部署目录</strong>。</p>
+<p>将<strong>皮肤站目录</strong>下的 <code class="notranslate">storage/oauth-private.key</code> 复制到 <strong>Janus 部署目录</strong>。</p>
 <p>使用 <code class="notranslate">node dist/main.js</code> 命令试运行看有无报错。</p>
 </li>
 <li>
@@ -257,7 +260,7 @@ systemctl <span class="pl-c1">enable</span> janus-daemon.service</pre></div>
 </li>
 </ol>
 <h2>修改前端</h2>
-<p>修改前端页面以统一授权页面风格，这一步是<strong>步骤6</strong>的拓展，修改完成后需要重新构建 <code class="notranslate">dist</code> 目录上传到<strong>皮肤站服务器</strong>。</p>
+<p>修改前端页面以统一授权页面风格，这一步是<strong>步骤 6</strong>的拓展，修改完成后需要重新构建 <code class="notranslate">dist</code> 目录上传到<strong>皮肤站服务器</strong>。</p>
 <ol>
 <li>
 <p>修改 <code class="notranslate">oidc-provider.service.ts</code> 文件，在 <code class="notranslate">OIDCProviderService</code> 类中添加以下代码：</p>
@@ -359,7 +362,7 @@ systemctl <span class="pl-c1">enable</span> janus-daemon.service</pre></div>
 <p>配置完以上步骤后，就可以在支持 Yggdrasil-Connect 协议的启动器使用了，不过现在是所有启动器共用一个公共的 Client ID，要为每个启动器配置一个独立 Client ID，只需要在<code class="notranslate">高级功能-OAuth2 应用</code> 中创建一个新的应用，<code class="notranslate">应用名</code>为启动器名，<code class="notranslate">回调 URL</code> 中填入 <code class="notranslate">{site_url}/yggc/client/public</code>，再将新的 <code class="notranslate">Client ID</code> 提交给启动器开发者。</p>
 <h2>一些坑</h2>
 <ol>
-<li><code class="notranslate">binaryTargets</code> 不好确定可以先不设置，部署到<strong>皮肤站服务器</strong>后根据运行报错在<strong>你的 PC</strong> 设置后重复步骤 10。</li>
+<li>皮肤站 <code class="notranslate">站点配置</code> 中 <code class="notranslate">站点地址（URL）</code> 必须填写。</li>
 </ol></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
