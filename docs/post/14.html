@@ -93,7 +93,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><p><em>作者：UpSGE</em></p>
 <h2>前言</h2>
-<p>本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。使用的机器为 Debian 11 x86_64 0.5G，因此也是在小内存机器上部署的教程。使用的皮肤站数据库为 Sqlite。</p>
+<p>本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。使用的机器为 Debian 11 x86_64 0.5G，因此也是在小内存机器上部署的教程。使用的皮肤站数据库为 SQLite。</p>
 <h2>备份皮肤站</h2>
 <p>操作前请务必备份皮肤站数据库和插件，以免过程中出现错误导致损失。</p>
 <h2>升级 Yggdrasil-Connect 插件</h2>
@@ -102,8 +102,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li>在 <code class="notranslate">插件管理-从远程下载-URL</code> 中填写下载连接 <code class="notranslate">https://mc.sjtu.cn/union</code> 安装新版插件。在 <code class="notranslate">插件管理</code> 中启用插件。</li>
 <li>连接终端并打开皮肤站根目录，执行：
 <div class="highlight highlight-source-shell"><pre class="notranslate">php artisan yggc:fix-uuid-table
-php artisan yggc:create-personal-access-client</pre></div>
-第一条命令清除了 UUID 表中可能存在的异常数据。第二条命令创建了一个个人访问客户端，返回 <code class="notranslate">Client ID</code>。</li>
+php artisan yggc:create-personal-access-client --owner=1</pre></div>
+第一条命令清除了 UUID 表中可能存在的异常数据。第二条命令在 <code class="notranslate">uid:1</code> 用户下创建了一个个人访问客户端，若该用户不存在可改为其他用户，返回 <code class="notranslate">Client ID</code>。</li>
 <li>在 <code class="notranslate">.env</code> 中新建一条配置
 <div class="highlight highlight-source-dotenv"><pre class="notranslate"><span class="pl-v">PASSPORT_PERSONAL_ACCESS_CLIENT_ID</span><span class="pl-k">=</span></pre></div>
 值为命令返回的个人访问客户端的 <code class="notranslate">Client ID</code>。</li>
@@ -119,7 +119,7 @@ php artisan yggc:create-personal-access-client</pre></div>
 <p>注意替换。</p>
 <ol>
 <li>
-<p>皮肤站禁用 <code class="notranslate">隐藏「高级功能」菜单</code> 插件，在 <code class="notranslate">高级功能-OAuth2 应用</code> 中对应上文 <code class="notranslate">Client ID</code> 的 <code class="notranslate">回调 URL</code> 中填入 <code class="notranslate">{site_url}/yggc/client/public</code>。</p>
+<p>皮肤站禁用 <code class="notranslate">隐藏「高级功能」菜单</code> 插件，在 <code class="notranslate">高级功能-OAuth2 应用</code> 中对应 <code class="notranslate">{client_id}</code> 的 <code class="notranslate">回调 URL</code> 中填入 <code class="notranslate">{site_url}/yggc/client/public</code>。</p>
 </li>
 <li>
 <p>在 <code class="notranslate">Yggdrasil Connect 配置</code> 中设置 <code class="notranslate">OpenID 提供者标识符</code> 为 <code class="notranslate">{janus_url}</code>。</p>

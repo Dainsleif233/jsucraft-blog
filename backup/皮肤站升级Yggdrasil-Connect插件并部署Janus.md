@@ -2,7 +2,7 @@
 
 ## 前言
 
-本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。使用的机器为 Debian 11 x86_64 0.5G，因此也是在小内存机器上部署的教程。使用的皮肤站数据库为 Sqlite。
+本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。使用的机器为 Debian 11 x86_64 0.5G，因此也是在小内存机器上部署的教程。使用的皮肤站数据库为 SQLite。
 
 ## 备份皮肤站
 
@@ -15,9 +15,9 @@
 3. 连接终端并打开皮肤站根目录，执行：
     ```bash
     php artisan yggc:fix-uuid-table
-    php artisan yggc:create-personal-access-client
+    php artisan yggc:create-personal-access-client --owner=1
     ```
-    第一条命令清除了 UUID 表中可能存在的异常数据。第二条命令创建了一个个人访问客户端，返回 `Client ID`。
+    第一条命令清除了 UUID 表中可能存在的异常数据。第二条命令在 `uid:1` 用户下创建了一个个人访问客户端，若该用户不存在可改为其他用户，返回 `Client ID`。
 4. 在 `.env` 中新建一条配置
     ```env
     PASSPORT_PERSONAL_ACCESS_CLIENT_ID=
@@ -34,7 +34,7 @@
 
 注意替换。
 
-1. 皮肤站禁用 `隐藏「高级功能」菜单` 插件，在 `高级功能-OAuth2 应用` 中对应上文 `Client ID` 的 `回调 URL` 中填入 `{site_url}/yggc/client/public`。
+1. 皮肤站禁用 `隐藏「高级功能」菜单` 插件，在 `高级功能-OAuth2 应用` 中对应 `{client_id}` 的 `回调 URL` 中填入 `{site_url}/yggc/client/public`。
 2. 在 `Yggdrasil Connect 配置` 中设置 `OpenID 提供者标识符` 为 `{janus_url}`。
 3. 安装 Node.js 22 到**你的 PC** 和**皮肤站服务器**。
 4. 下载 Janus 源码到**你的 PC**，仓库地址：
