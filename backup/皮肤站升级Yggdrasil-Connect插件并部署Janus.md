@@ -248,11 +248,11 @@
         ctx.body = this.generateHtml('授权', content);
     }
 
-    async userCodeInputSource(ctx: oidc.KoaContextWithOIDC, form: String, _out: any, err: any) {
+    async userCodeInputSource(ctx: oidc.KoaContextWithOIDC, form: String, out: any, err: any) {
         let msg: string;
         if (err && (err.userCode || err.name === 'NoCodeError')) msg = '您输入的代码不正确，请重试';
-        else if (err && err.name === 'AbortedError') msg = '登录请求被中断';
-        else if (err) msg = '处理请求时发生错误';
+        else if (err && err.name === 'AbortedError') msg = '登录请求被中断：' + out;
+        else if (err) msg = '处理请求时发生错误：' + out;
         else msg = '请输入您设备上显示的代码';
 
         const content = `
