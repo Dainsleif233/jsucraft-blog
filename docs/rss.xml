@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsumc.fun</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic1.imgdb.cn/item/692680593203f7be0033c06d.png</url><title>avatar</title><link>https://blog.jsumc.fun</link></image><lastBuildDate>Wed, 26 Nov 2025 04:22:11 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>MUAFrpDaemon的systemd实现</title><link>https://blog.jsumc.fun/post/17.html</link><description>*作者：UpSGE*
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsumc.fun</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic1.imgdb.cn/item/692680593203f7be0033c06d.png</url><title>avatar</title><link>https://blog.jsumc.fun</link></image><lastBuildDate>Fri, 28 Nov 2025 16:05:28 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>MUAFrpDaemon的systemd实现</title><link>https://blog.jsumc.fun/post/17.html</link><description>*作者：UpSGE*
 
 ## 前言
 
@@ -15,68 +15,7 @@
 
 ## 前言
 
-本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/14.html</guid><pubDate>Sat, 13 Sep 2025 12:48:37 +0000</pubDate></item><item><title>苏高联第六次线下聚会活动顺利举行！</title><link>https://blog.jsumc.fun/post/13.html</link><description>苏高联5月18日电 2025年5月18日苏高联（江苏Minecraft高校联合会）第六次线下聚餐活动在南京市鼓楼区举行。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/13.html</guid><pubDate>Mon, 26 May 2025 14:33:19 +0000</pubDate></item><item><title>MUA·Bingo II 赛事简报</title><link>https://blog.jsumc.fun/post/12.html</link><description>## 主办方
-
-MUA_MC高校联盟
-
-## 承办方
-嘉兴大学Minecraft方块社，江苏大学Minecraft同好会
-
-![bingo原版](https://pic1.imgdb.cn/item/67fa124188c538a9b5cc01f3.png)
-
-## 赛程及简报
-
-- 4月4日 初赛A组
-
-    ![初赛A组](https://pic1.imgdb.cn/item/67fa0f4a88c538a9b5cbfa81.png)
-
-    食缤果脯队（红）进入决赛
-
-    QQ农场提醒您菜熟了（蓝）、万籁携生队（绿）进入复活赛
-
-    翻斗花园合成站（黄）被淘汰
-
-- 4月4日 初赛B组
-
-    ![初赛B组](https://pic1.imgdb.cn/item/67fa0f5b88c538a9b5cbfab8.png)
-
-    红队（蓝）进入决赛
-
-    ikungenshin（绿）、劫掠少年团（红）进入复活赛
-
-    米出是猫娘队（黄）被淘汰
-
-- 4月5日 复活赛
-
-    ![复活赛](https://pic1.imgdb.cn/item/67fa0f5c88c538a9b5cbfabb.png)
-
-    ikungenshin（黄）、万籁携生队（蓝）进入决赛
-
-    劫掠少年团（绿）、QQ农场提醒您菜熟了（红）被淘汰
-
-- 4月6日 决赛
-
-    ![决赛](https://pic1.imgdb.cn/item/67fa0f5d88c538a9b5cbfabd.png)
-
-    食缤果脯队（红）获得决赛第一名
-
-    ikungenshin（绿）获得决赛第二名
-
-    红队（蓝）获得决赛第三名
-
-    万籁携生队（黄）获得决赛第四名
-
-## 合影
-
-![bingo合影1](https://pic1.imgdb.cn/item/67fa147c88c538a9b5cc0871.png)
-
-![bingo合影2](https://pic1.imgdb.cn/item/67fa147c88c538a9b5cc0874.png)
-
-## 表演赛
-
-![暮色(随机事件）](https://pic1.imgdb.cn/item/67fa124188c538a9b5cc01f4.png)
-
-暮色森林x随机事件Bingo表演赛将于4月12日进行，敬请期待！。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/12.html</guid><pubDate>Sat, 12 Apr 2025 07:24:22 +0000</pubDate></item><item><title>编写脚本实现自动云备份</title><link>https://blog.jsumc.fun/post/11.html</link><description>*作者：UpSGE*
+本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/14.html</guid><pubDate>Sat, 13 Sep 2025 12:48:37 +0000</pubDate></item><item><title>苏高联第六次线下聚会活动顺利举行！</title><link>https://blog.jsumc.fun/post/13.html</link><description>苏高联5月18日电 2025年5月18日苏高联（江苏Minecraft高校联合会）第六次线下聚餐活动在南京市鼓楼区举行。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/13.html</guid><pubDate>Mon, 26 May 2025 14:33:19 +0000</pubDate></item><item><title>MUA·Bingo II 赛事简报</title><link>https://blog.jsumc.fun/post/12.html</link><description>MUA·Bingo II 已于 4月4日 至 4月6日 进行，本文为赛事简报。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/12.html</guid><pubDate>Sat, 12 Apr 2025 07:24:22 +0000</pubDate></item><item><title>编写脚本实现自动云备份</title><link>https://blog.jsumc.fun/post/11.html</link><description>*作者：UpSGE*
 
 ### 写在前面
 
