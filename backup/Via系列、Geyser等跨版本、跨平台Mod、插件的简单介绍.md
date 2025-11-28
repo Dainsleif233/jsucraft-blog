@@ -1,12 +1,12 @@
 *作者：UpSGE*
 
-## 写在前面
+### 写在前面
 
 本文主要介绍以下内容：
 
-1. ViaVersion系列（[ViaVersion](#viaversion（fabric/spigot/velocity）)、[ViaBackwards](#viabackwards（fabric/spigot/velocity）)、[ViaRewind](#viarewind（fabric/spigot/velocity）)、[ViaFabric](#viafabric（fabric）)、[ViaFabricPlus](#viafabricplus（fabric客户端）)、[ViaForge](#viaforge（forge客户端）)、[ViaAAS](#viaaas)、[ViaProxy](#viaproxy)、[ViaBungee](#viabungee（bungeecord）)、[ViaSponge](#viasponge（sponge）)、[ViaAprilFools](#viaaprilfools（fabric/spigot/velocity）)、[ViaLegacy](#vialegacy（spigot/velocity）)、[ViaRewindLegacySupport](#viarewindlegacysupport（spigot/velocity）)）
-2. 其他项目（[MultiConnect](#multiconnect（fabric）)、[ViaForgePlus](#viaforgeplus（forge）)、[ViaVanillaPlus](#viavanillaplus（fabric）)、[ViaBedrock](#viabedrock（spigot/velocity）)）
-3. Geyser系列（[Geyser](#geyser（fabric/neoforge/spigot/velocity/bungeecord/viaproxy）)、[Floodgate](#floodgate（fabric/spigot/bungeecord/velocity）)、[ThirdPartyCosmetics](#thirdpartycosmetics)、[Hurricane](#hurricane（fabric/neoforge/spigot）)、[GeyserConnect](#geyserconnect)）
+1. ViaVersion系列（[ViaVersion](#viaversion（fabric/spigot/velocity）)、[ViaBackwards](#viabackwards（fabric/spigot/velocity）)、[ViaRewind](#viarewind（fabric/spigot/velocity）)、[ViaFabric](#viafabric（fabric）)、[ViaFabricPlus](#viafabricplus（fabric客户端）)、[ViaForge](#viaforge（forge客户端）)、[ViaAAS](#viaaas)、[ViaProxy](#viaproxy)、[ViaBungee](#viabungee（bungeecord）)、[ViaSponge](#viasponge（sponge）)、[ViaAprilFools](#viaaprilfools（fabric/spigot/velocity）)、[ViaLegacy](#vialegacy（spigot/velocity）)、[ViaRewindLegacySupport](#viarewindlegacysupport（spigot/velocity）)）；
+2. 其他项目（[MultiConnect](#multiconnect（fabric）)、[ViaForgePlus](#viaforgeplus（forge）)、[ViaVanillaPlus](#viavanillaplus（fabric）)、[ViaBedrock](#viabedrock（spigot/velocity）)）；
+3. Geyser系列（[Geyser](#geyser（fabric/neoforge/spigot/velocity/bungeecord/viaproxy）)、[Floodgate](#floodgate（fabric/spigot/bungeecord/velocity）)、[ThirdPartyCosmetics](#thirdpartycosmetics)、[Hurricane](#hurricane（fabric/neoforge/spigot）)、[GeyserConnect](#geyserconnect)）。
 
 ## 开始！
 

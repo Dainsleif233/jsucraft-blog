@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsumc.fun</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic1.imgdb.cn/item/692680593203f7be0033c06d.png</url><title>avatar</title><link>https://blog.jsumc.fun</link></image><lastBuildDate>Fri, 28 Nov 2025 16:10:34 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>MUAFrpDaemon的systemd实现</title><link>https://blog.jsumc.fun/post/17.html</link><description>*作者：UpSGE*
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsumc.fun</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic1.imgdb.cn/item/692680593203f7be0033c06d.png</url><title>avatar</title><link>https://blog.jsumc.fun</link></image><lastBuildDate>Fri, 28 Nov 2025 16:38:40 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>MUAFrpDaemon的systemd实现</title><link>https://blog.jsumc.fun/post/17.html</link><description>*作者：UpSGE*
 
 ## 前言
 
@@ -22,59 +22,13 @@
 担心服务器存档损坏？担心硬盘损坏导致服务器不复存在？
 本文将通过编写简单的脚本来实现本地备份，并通过搭建WebDav来实现云备份。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/11.html</guid><pubDate>Thu, 02 Jan 2025 12:49:28 +0000</pubDate></item><item><title>Via系列、Geyser等跨版本、跨平台Mod、插件的简单介绍</title><link>https://blog.jsumc.fun/post/10.html</link><description>*作者：UpSGE*
 
-## 写在前面
+### 写在前面
 
 本文主要介绍以下内容：
 
-1. ViaVersion系列（[ViaVersion](#viaversion（fabric/spigot/velocity）)、[ViaBackwards](#viabackwards（fabric/spigot/velocity）)、[ViaRewind](#viarewind（fabric/spigot/velocity）)、[ViaFabric](#viafabric（fabric）)、[ViaFabricPlus](#viafabricplus（fabric客户端）)、[ViaForge](#viaforge（forge客户端）)、[ViaAAS](#viaaas)、[ViaProxy](#viaproxy)、[ViaBungee](#viabungee（bungeecord）)、[ViaSponge](#viasponge（sponge）)、[ViaAprilFools](#viaaprilfools（fabric/spigot/velocity）)、[ViaLegacy](#vialegacy（spigot/velocity）)、[ViaRewindLegacySupport](#viarewindlegacysupport（spigot/velocity）)）
-2. 其他项目（[MultiConnect](#multiconnect（fabric）)、[ViaForgePlus](#viaforgeplus（forge）)、[ViaVanillaPlus](#viavanillaplus（fabric）)、[ViaBedrock](#viabedrock（spigot/velocity）)）
-3. Geyser系列（[Geyser](#geyser（fabric/neoforge/spigot/velocity/bungeecord/viaproxy）)、[Floodgate](#floodgate（fabric/spigot/bungeecord/velocity）)、[ThirdPartyCosmetics](#thirdpartycosmetics)、[Hurricane](#hurricane（fabric/neoforge/spigot）)、[GeyserConnect](#geyserconnect)）
-
-## 开始！
-
-### [ViaVersion](https://www.mcmod.cn/class/5760.html)（Fabric/Spigot/Velocity）
-
-- ViaVersion自身的作用是支持新版客户端连接旧版服务器（服务端和客户端都是）
-- ViaVersion及其附属只翻译了网络包，有很大概率触发服务器反作弊
-- ViaVersion在作为Fabric Mod时，需要[ViaFabric](#viafabric（fabric）)作为前置
-- 1.20.x及以下版本支持BungeeCord和Sponge，1.21.x由[ViaBungee](#viabungee（bungeecord）)和[ViaSponge](#viasponge（sponge）)支持
-
-### [ViaBackwards](https://www.mcmod.cn/class/5762.html)（Fabric/Spigot/Velocity）
-
-- ViaBackwards自身的作用是支持1.9及以上的客户端连接至新版的服务器
-- ViaBackwards需要[ViaVersion](#viaversion（fabric/spigot/velocity）)/[ViaFabric](#viafabric（fabric）)作为前置
-
-### [ViaRewind](https://www.mcmod.cn/class/5761.html)（Fabric/Spigot/Velocity）
-
-- ViaRewind自身的作用是支持1.7.X/1.8.X的客户端连接至更高版本的服务器
-- ViaRewind在1.10.x及以上服务器需要[ViaBackwards](#viabackwards（fabric/spigot/velocity）)作为前置
-
-### [ViaFabric](https://www.mcmod.cn/class/3327.html)（Fabric）
-
-- ViaFabric在Fabric客户端及服务端实现了[ViaVersion](#viaversion（fabric/spigot/velocity）)
-- ViaFabric可作为[ViaVersion](#viaversion（fabric/spigot/velocity）)的前置也可单独起作用，当[ViaFabric](#viafabric（fabric）)并未及时更新时，可以通过更新[ViaVersion](#viaversion（fabric/spigot/velocity）)来更新
-
-### [ViaFabricPlus](https://www.mcmod.cn/class/9446.html)（Fabric客户端）
-
-- ViaFabricPlus是面向客户端的[ViaFabric](#viafabric（fabric）)和[MultiConnect](#multiconnect（fabric）)替代品，可连接至几乎所有版本（包括正式版、Beta版、Alpha版、Classic版、战斗测试8C、部分愚人节版、最新快照版本和最新基岩版）的Minecraft服务器
-- 相比[ViaVersion](#viaversion（fabric/spigot/velocity）)，ViaFabricPlus更深层地修改了客户端代码，几乎不会触发服务器反作弊
-- ViaFabricPlus支持连接最新的基岩版服务器，这通过[ViaBedrock](#viabedrock（spigot/velocity）)实现，但缺少部分功能
-- ViaFabricPlus支持连接Beta版、Alpha版、Classic版等，由[ViaLegacy](#vialegacy（spigot/velocity）)实现
-
-### [ViaForge](https://www.mcmod.cn/class/5728.html)（Forge客户端）
-
-- ViaForge是面向Forge的[ViaVersion](#viaversion（fabric/spigot/velocity）)客户端实现
-- ViaForge支持连接以下版本的服务器
-
-        正式版 1.0.0 - 1.21.8
-        Beta 版 b1.0 - b1.8.1
-        Alpha 版 a1.0.15 - a1.2.6
-        Classic 版 c0.0.15 - c0.30
-
-### [ViaAAS](https://github.com/ViaVersion/VIAaaS)
-
-- ViaAAS是一个独立的[ViaVersion](#viaversion（fabric/spigot/velocity）)代理服务，能无缝地将不同版本的Minecraft客户端连接到同一台后端服务器
-- ViaAAS还拥有一个便捷的网页认证系统，确保在线模式下的安全连接。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/10.html</guid><pubDate>Wed, 11 Dec 2024 16:13:31 +0000</pubDate></item><item><title>CMCC-EDU自动授权</title><link>https://blog.jsumc.fun/post/9.html</link><description>*作者：UpSGE*
+1. ViaVersion系列（[ViaVersion](#viaversion（fabric/spigot/velocity）)、[ViaBackwards](#viabackwards（fabric/spigot/velocity）)、[ViaRewind](#viarewind（fabric/spigot/velocity）)、[ViaFabric](#viafabric（fabric）)、[ViaFabricPlus](#viafabricplus（fabric客户端）)、[ViaForge](#viaforge（forge客户端）)、[ViaAAS](#viaaas)、[ViaProxy](#viaproxy)、[ViaBungee](#viabungee（bungeecord）)、[ViaSponge](#viasponge（sponge）)、[ViaAprilFools](#viaaprilfools（fabric/spigot/velocity）)、[ViaLegacy](#vialegacy（spigot/velocity）)、[ViaRewindLegacySupport](#viarewindlegacysupport（spigot/velocity）)）；
+2. 其他项目（[MultiConnect](#multiconnect（fabric）)、[ViaForgePlus](#viaforgeplus（forge）)、[ViaVanillaPlus](#viavanillaplus（fabric）)、[ViaBedrock](#viabedrock（spigot/velocity）)）；
+3. Geyser系列（[Geyser](#geyser（fabric/neoforge/spigot/velocity/bungeecord/viaproxy）)、[Floodgate](#floodgate（fabric/spigot/bungeecord/velocity）)、[ThirdPartyCosmetics](#thirdpartycosmetics)、[Hurricane](#hurricane（fabric/neoforge/spigot）)、[GeyserConnect](#geyserconnect)）。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/10.html</guid><pubDate>Wed, 11 Dec 2024 16:13:31 +0000</pubDate></item><item><title>CMCC-EDU自动授权</title><link>https://blog.jsumc.fun/post/9.html</link><description>*作者：UpSGE*
 
 ### 写在前面
 
