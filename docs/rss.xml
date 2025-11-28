@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsumc.fun</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic1.imgdb.cn/item/692680593203f7be0033c06d.png</url><title>avatar</title><link>https://blog.jsumc.fun</link></image><lastBuildDate>Fri, 28 Nov 2025 16:07:26 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>MUAFrpDaemon的systemd实现</title><link>https://blog.jsumc.fun/post/17.html</link><description>*作者：UpSGE*
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsumc.fun</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic1.imgdb.cn/item/692680593203f7be0033c06d.png</url><title>avatar</title><link>https://blog.jsumc.fun</link></image><lastBuildDate>Fri, 28 Nov 2025 16:10:34 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>MUAFrpDaemon的systemd实现</title><link>https://blog.jsumc.fun/post/17.html</link><description>*作者：UpSGE*
 
 ## 前言
 
@@ -21,6 +21,8 @@
 
 担心服务器存档损坏？担心硬盘损坏导致服务器不复存在？
 本文将通过编写简单的脚本来实现本地备份，并通过搭建WebDav来实现云备份。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/11.html</guid><pubDate>Thu, 02 Jan 2025 12:49:28 +0000</pubDate></item><item><title>Via系列、Geyser等跨版本、跨平台Mod、插件的简单介绍</title><link>https://blog.jsumc.fun/post/10.html</link><description>*作者：UpSGE*
+
+## 写在前面
 
 本文主要介绍以下内容：
 
