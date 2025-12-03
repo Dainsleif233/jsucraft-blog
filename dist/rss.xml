@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>JSUCraft Blog</title><link>https://blog.jsumc.fun</link><description>江大MC同好会博客</description><copyright>JSUCraft Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://pic1.imgdb.cn/item/692680593203f7be0033c06d.png</url><title>avatar</title><link>https://blog.jsumc.fun</link></image><lastBuildDate>Fri, 28 Nov 2025 16:38:40 +0000</lastBuildDate><managingEditor>JSUCraft Blog</managingEditor><ttl>60</ttl><webMaster>JSUCraft Blog</webMaster><item><title>MUAFrpDaemon的systemd实现</title><link>https://blog.jsumc.fun/post/17.html</link><description>*作者：UpSGE*
+
+## 前言
+
+由于我们的 frp 进程管理统一使用 `systemd`，网络每天会中断两次，依赖其自动重启等功能，在使用 `python` 实现的 `MUAFrpDaemon` 时出现了诸多问题，且不好统一管理，故写了一个 `systemd` 的实现。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/17.html</guid><pubDate>Thu, 20 Nov 2025 13:09:47 +0000</pubDate></item><item><title>《我的世界：建造者与生物群系》桌游中文（简体）规则</title><link>https://blog.jsumc.fun/post/16.html</link><description>*作者：UpSGE*
+
+还记得你在《Minecraft》中挖矿、建房子、打怪的快乐吗？
+
+这款桌游就是把那个体验搬上桌面！你和朋友们将探索主世界，挖方块、建建筑、打怪、提升经验值（XP）。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/16.html</guid><pubDate>Tue, 07 Oct 2025 19:16:32 +0000</pubDate></item><item><title>江苏大学复原风格指导</title><link>https://blog.jsumc.fun/post/15.html</link><description>*作者：\_YEEZ\_*
+
+## 一、前言
+
+江苏大学复原具有复杂性，首先是校内崎岖的地形以及不规整的建筑，朝向各异且开口复杂，楼栋间连接复杂且死角较多，对建筑师来说是不小的挑战。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/15.html</guid><pubDate>Thu, 18 Sep 2025 14:32:29 +0000</pubDate></item><item><title>皮肤站升级Yggdrasil-Connect插件并部署Janus</title><link>https://blog.jsumc.fun/post/14.html</link><description>*作者：UpSGE*
+
+## 前言
+
+本文记录了在 Union 皮肤站上升级 Yggdrasil-Connect 插件并部署 Janus 的步骤。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/14.html</guid><pubDate>Sat, 13 Sep 2025 12:48:37 +0000</pubDate></item><item><title>苏高联第六次线下聚会活动顺利举行！</title><link>https://blog.jsumc.fun/post/13.html</link><description>苏高联5月18日电 2025年5月18日苏高联（江苏Minecraft高校联合会）第六次线下聚餐活动在南京市鼓楼区举行。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/13.html</guid><pubDate>Mon, 26 May 2025 14:33:19 +0000</pubDate></item><item><title>MUA·Bingo II 赛事简报</title><link>https://blog.jsumc.fun/post/12.html</link><description>MUA·Bingo II 已于 4月4日 至 4月6日 进行，本文为赛事简报。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/12.html</guid><pubDate>Sat, 12 Apr 2025 07:24:22 +0000</pubDate></item><item><title>编写脚本实现自动云备份</title><link>https://blog.jsumc.fun/post/11.html</link><description>*作者：UpSGE*
+
+### 写在前面
+
+担心服务器存档损坏？担心硬盘损坏导致服务器不复存在？
+本文将通过编写简单的脚本来实现本地备份，并通过搭建WebDav来实现云备份。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/11.html</guid><pubDate>Thu, 02 Jan 2025 12:49:28 +0000</pubDate></item><item><title>Via系列、Geyser等跨版本、跨平台Mod、插件的简单介绍</title><link>https://blog.jsumc.fun/post/10.html</link><description>*作者：UpSGE*
+
+### 写在前面
+
+本文主要介绍以下内容：
+
+1. ViaVersion系列（[ViaVersion](#viaversion（fabric/spigot/velocity）)、[ViaBackwards](#viabackwards（fabric/spigot/velocity）)、[ViaRewind](#viarewind（fabric/spigot/velocity）)、[ViaFabric](#viafabric（fabric）)、[ViaFabricPlus](#viafabricplus（fabric客户端）)、[ViaForge](#viaforge（forge客户端）)、[ViaAAS](#viaaas)、[ViaProxy](#viaproxy)、[ViaBungee](#viabungee（bungeecord）)、[ViaSponge](#viasponge（sponge）)、[ViaAprilFools](#viaaprilfools（fabric/spigot/velocity）)、[ViaLegacy](#vialegacy（spigot/velocity）)、[ViaRewindLegacySupport](#viarewindlegacysupport（spigot/velocity）)）；
+2. 其他项目（[MultiConnect](#multiconnect（fabric）)、[ViaForgePlus](#viaforgeplus（forge）)、[ViaVanillaPlus](#viavanillaplus（fabric）)、[ViaBedrock](#viabedrock（spigot/velocity）)）；
+3. Geyser系列（[Geyser](#geyser（fabric/neoforge/spigot/velocity/bungeecord/viaproxy）)、[Floodgate](#floodgate（fabric/spigot/bungeecord/velocity）)、[ThirdPartyCosmetics](#thirdpartycosmetics)、[Hurricane](#hurricane（fabric/neoforge/spigot）)、[GeyserConnect](#geyserconnect)）。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/10.html</guid><pubDate>Wed, 11 Dec 2024 16:13:31 +0000</pubDate></item><item><title>CMCC-EDU自动授权</title><link>https://blog.jsumc.fun/post/9.html</link><description>*作者：UpSGE*
+
+### 写在前面
+
+本文以 CMCC-EDU 为例，实现自动认证。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/9.html</guid><pubDate>Fri, 29 Nov 2024 06:36:11 +0000</pubDate></item><item><title>方块江大工具集</title><link>https://blog.jsumc.fun/post/8.html</link><description>这里选取了一些优秀的建筑工具社区教程，以及复原相关工具，供建筑师查阅和使用。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/8.html</guid><pubDate>Sat, 02 Nov 2024 07:05:04 +0000</pubDate></item><item><title>方块江大（一期）策划案</title><link>https://blog.jsumc.fun/post/7.html</link><description>#### 主办：江苏大学独角兽电娱社MC分部&#13;
+&#13;
+#### 承办：方块江大建筑组&#13;
+&#13;
+## 活动目的&#13;
+&#13;
+- 初步完成江苏大学本部校区的复原。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/7.html</guid><pubDate>Fri, 25 Oct 2024 14:15:16 +0000</pubDate></item><item><title>06.多人联机</title><link>https://blog.jsumc.fun/post/6.html</link><description>*作者：UpSGE*
+
+## 局域网联机
+
+#### 条件
+
+- 多人联机需要使用同版本游戏
+- 设备需要在同一局域网内的同一网段
+- 其他设备需要能访问主设备（可以用ping工具测试）
+
+#### 操作
+
+- 主设备进入世界，打开局域网联机
+
+![局域网世界](https://pic.imgdb.cn/item/6725c8a9d29ded1a8c67ed29.png)
+
+- 其他设备打开多人游戏，若正常则可以扫描到主设备
+
+![多人游戏](https://pic.imgdb.cn/item/6725c8a8d29ded1a8c67ecfa.png)
+
+## 远程联机
+
+当设备不处于局域网时，通常无法访问主设备，因此无法联机。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/6.html</guid><pubDate>Wed, 21 Aug 2024 15:21:25 +0000</pubDate></item><item><title>05.安装整合包</title><link>https://blog.jsumc.fun/post/5.html</link><description>*作者：UpSGE*
+
+## 社区整合包
+
+#### 特点
+
+- 社区整合包一般体积较小
+- 是zip（内含“overrides”文件夹）或mcpack格式
+
+#### 安装
+
+- HMCL和PCL2可以直接拖入zip或mcpack文件。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/5.html</guid><pubDate>Wed, 21 Aug 2024 15:18:19 +0000</pubDate></item><item><title>04.导入存档、数据包、材质包</title><link>https://blog.jsumc.fun/post/4.html</link><description>*作者：UpSGE*
+
+## 导入存档
+
+将要导入的存档解压，最终格式为一个文件夹，文件夹内有“level.dat”文件，将该文件夹复制到游戏文件夹的“saves”文件夹内即可完成导入。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/4.html</guid><pubDate>Wed, 21 Aug 2024 15:14:57 +0000</pubDate></item><item><title>03.安装mod、光影</title><link>https://blog.jsumc.fun/post/3.html</link><description>*作者：UpSGE*
+
+### 写在前面
+
+本文将介绍在启动器中为Java版安装Mod和光影的方法。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/3.html</guid><pubDate>Wed, 21 Aug 2024 15:13:24 +0000</pubDate></item><item><title>02.主流启动器介绍</title><link>https://blog.jsumc.fun/post/2.html</link><description>*作者：UpSGE*
+
+### 写在前面
+
+本文只介绍官方启动器和具有完备功能（Authlib Injector登入、整合包安装等）的主流启动器。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/2.html</guid><pubDate>Wed, 21 Aug 2024 15:09:12 +0000</pubDate></item><item><title>01.MC的版本都有哪些？</title><link>https://blog.jsumc.fun/post/1.html</link><description>*作者：UpSGE*
+
+### 写在前面
+
+本文只介绍官方（Microsoft、Mojang Studios、网易）发行的Minecraft版本，不包括周边版本（Minecraft Dungeons、Minecraft Legends等）。</description><guid isPermaLink="true">https://blog.jsumc.fun/post/1.html</guid><pubDate>Wed, 21 Aug 2024 14:51:00 +0000</pubDate></item></channel></rss>
