@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/*",
+      "headers": [
+        {
+          "key": "X-Authlib-Injector-API-Location",
+          "value": "https://skin.jsumc.fun/api/yggdrasil"
+        }
+      ]
+    }
+  ]
+}
