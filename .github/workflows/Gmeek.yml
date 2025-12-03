@@ -92,17 +92,7 @@ jobs:
         with:
           ref: pages
           fetch-depth: 0
-        continue-on-error: true
-        id: checkout-pages
 
-      - name: Create pages branch if not exists
-        if: steps.checkout-pages.outcome == 'failure'
-        run: |
-          git checkout --orphan pages
-          git rm -rf . || true
-          git commit --allow-empty -m "Initialize pages branch"
-          git push origin pages
-          
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
