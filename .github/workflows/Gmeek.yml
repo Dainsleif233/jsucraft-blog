@@ -96,7 +96,7 @@ jobs:
 
       - name: Commit and push to pages branch
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply. github.com"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add dist
           git commit -m "🚀 Deploy blog to pages branch" || echo "nothing to commit"
